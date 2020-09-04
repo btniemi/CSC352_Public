@@ -1,5 +1,8 @@
 ﻿namespace Acronym
 {
+    using System.Runtime.InteropServices;
+    using System.Runtime.InteropServices.ComTypes;
+    using Microsoft.VisualBasic;
     using NUnit.Framework;
 
     [TestFixture]
@@ -27,8 +30,21 @@
         [TestCase]
         public void All_caps_word()
         {
-            Assert.That(Acronym.Abbreviate("GNU Image Manipulation Program"), Is.EqualTo("GIMP"));
+            //AAA
+            //Arange, Act, Assert
+
+            //Arange - Gather Test Data
+            var arrangeTestData = "GUN Image Manipulation Program";
+            var expectedResult = "GIMP";
+
+            //Act-Preform some action
+            var actualResult = Acronym.Abbreviate(arrangeTestData);
+
+            //Assert - Check your results against what is expected
+            Assert.That(actualResult, Is.EqualTo(expectedResult));
+
         }
+
 
         [TestCase]
         public void Punctuation_without_whitespace()
