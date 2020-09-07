@@ -9,7 +9,8 @@
         {
             StringBuilder sb = new StringBuilder();
 
-            string[] splitPhrase = phrase.Split(' ');
+            char[] delimiters = new char[] { ' ', '-', '_' };
+            string[] splitPhrase = phrase.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
 
             foreach(string subphrase in splitPhrase)
             {

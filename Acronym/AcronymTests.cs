@@ -75,5 +75,46 @@
         {
             Assert.That(Acronym.Abbreviate("The Road _Not_ Taken"), Is.EqualTo("TRNT"));
         }
+
+        [TestCase]
+        public void Underscore_Double_emphasis()
+        {
+            Assert.That(Acronym.Abbreviate("The Road __Not_ Taken"), Is.EqualTo("TRNT"));
+        }
+
+        [TestCase]
+        public void Numbers_In_Name()
+        {
+            // AAA
+            var arrange = "This 1 Acronmym Has 2 Numbers";
+
+            var actual = Acronym.Abbreviate(arrange);
+
+            var expected = "T1AH2N";
+
+            Assert.That(expected, Is.EqualTo(actual));
+        }
+
+        [TestCase]
+        public void specialCharacter_In_Name()
+        {
+            // AAA
+            var arrange = "This Acronmym Has !";
+
+            var actual = Acronym.Abbreviate(arrange);
+
+            var expected = "TAH!";
+
+            Assert.That(expected, Is.EqualTo(actual));
+        }
+
+        [TestCase("Indexed Simple Access Mapping", "ISAM")] //this is the same as making and coping the test cases over and over
+
+        public void TestFunction(string input, string expected)
+        {
+            Assert.That(Acronym.Abbreviate(input), Is.EqualTo(expected));
+        }
+
+
     }
 }
