@@ -27,7 +27,12 @@
 
         internal static bool IsPrime(int number)
         {
-            throw new NotImplementedException();
+            if (number <= 1)
+                return false;
+            for (int i = 2; i < number; i++)
+                if (number % i == 0)
+                    return false;
+            return true;
         }
 
         internal static IEnumerable<int> GetNumbersOneThru(int thruInclusive)
