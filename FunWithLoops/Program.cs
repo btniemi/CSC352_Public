@@ -7,12 +7,28 @@
     {
         internal static IEnumerable<int> NumbersOneThruTwentyFive()
         {
-            throw new NotImplementedException();
+            //List<int> numbers = new List<int>();
+
+            //for(int i=1; i<=25; i++)
+            //{
+            //    numbers.Add(i);
+            //}
+
+            //return numbers;
+
+            for(int i=1; i <=25; i++)
+            {
+                yield return i;
+            }
+
         }
 
         internal static IEnumerable<int> EvenNumbersOneThruTwentyFive()
         {
-            throw new NotImplementedException();
+            for(int i=2; i<=25; i += 2)
+            {
+                yield return i;
+            }
         }
 
         internal static IEnumerable<int> OddNumbersOneThruTwentyFive()
@@ -27,12 +43,27 @@
 
         internal static bool IsPrime(int number)
         {
+            //any positive integer
+            //divisible by one and itself
+            bool isPrime = true;
+
             if (number <= 1)
-                return false;
-            for (int i = 2; i < number; i++)
-                if (number % i == 0)
-                    return false;
-            return true;
+            {
+                isPrime = false;
+            }
+            else
+            {
+                for (int i = 2; i < number; i++)
+                {
+                    if (number % i == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+            }
+            return isPrime;
         }
 
         internal static IEnumerable<int> GetNumbersOneThru(int thruInclusive)
