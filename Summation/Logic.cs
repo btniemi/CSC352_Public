@@ -4,9 +4,9 @@ namespace Summation
 {
     public class Logic
     {
-        public static int Summation(int n)
+        public static long Summation(long n)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
     }
 }

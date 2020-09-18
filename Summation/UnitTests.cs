@@ -11,10 +11,10 @@
         [TestCase(2, 3)]
         [TestCase(5, 15)]
         [TestCase(100, 5050)]
-        [TestCase(200000, -1)]
-        public void Summation_Test(int input, int expected)
+        [TestCase(200000, 20000100000)]
+        public void Summation_Test(long input, long expected)
         {
-            int actual = Logic.Summation(input);
+            long actual = Logic.Summation(input);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
