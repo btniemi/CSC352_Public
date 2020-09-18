@@ -11,11 +11,13 @@ namespace Factorial
     [TestFixture]
     public class UnitTest
     {
-        [Test]
-        public void factorial_test()
+        [TestCase(5,120)]
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 6)]
+        public void factorial_test(int n, int expected)
         {
-            var expected = -1;
-            var actual = Logic.factorial(15000);
+            int actual = Logic.factorial(n);
             Assert.That(actual, Is.EqualTo(expected));
         }
     }

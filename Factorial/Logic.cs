@@ -13,7 +13,8 @@ namespace Factorial
             }
             else
             {
-                return n * factorial(n - 1);
+                int nextFactorial = factorial(n - 1);
+                return n * nextFactorial;
             }
         }
     }
