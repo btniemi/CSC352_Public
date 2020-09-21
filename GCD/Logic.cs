@@ -18,7 +18,7 @@ namespace GCD
             //    return gcd(y, x % y);
             //}
 
-            //ITERATIVE WAY
+            //ITERATIVE WAY BRUTE FORCE BRAEDON
             long result = 0;
 
             for (long i = 1; i <= x; i++)
@@ -29,6 +29,18 @@ namespace GCD
                 }
             }
             return result;
+
+            //Iterative Way using the most optiomal solution
+            //long gcd = 0; 
+            //while( y != 0)
+            //{
+            //    long modXY = x % y;
+            //    gcd = y;
+            //    y = modXY;
+            //    x = gcd;
+            //}
+
+            //return gcd; 
 
             //MANAGING OWN STACK(did not fully solve this if possible)
             //Stack<long> stack = new Stack<long>();
