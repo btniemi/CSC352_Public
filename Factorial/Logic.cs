@@ -7,15 +7,25 @@ namespace Factorial
     {
         public static int factorial(int n)
         {
-            if (n == 0)
+            //RECURSIVE WAY
+            //if (n == 0)
+            //{
+            //    return 1;
+            //}
+            //else
+            //{
+            //    int nextFactorial = factorial(n - 1);
+            //    return n * nextFactorial;
+            //}
+
+            //ITERATIVE WAY
+            int result = 1;
+
+            for(int i = 1; i <= n; i++)
             {
-                return 1;
+                result = result * i;
             }
-            else
-            {
-                int nextFactorial = factorial(n - 1);
-                return n * nextFactorial;
-            }
+            return result;
         }
     }
 }
