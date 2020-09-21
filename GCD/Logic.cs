@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GCD
 {
@@ -20,14 +21,40 @@ namespace GCD
             //ITERATIVE WAY
             long result = 0;
 
-            for(long i = 1; i <= x; i++)
+            for (long i = 1; i <= x; i++)
             {
-                if(x % i == 0 && y % i == 0)
+                if (x % i == 0 && y % i == 0)
                 {
                     result = i;
                 }
             }
             return result;
+
+            //MANAGING OWN STACK(did not fully solve this if possible)
+            //Stack<long> stack = new Stack<long>();
+            //long lowerValue;
+            //if (x > y)
+            //{
+            //    lowerValue = x;
+            //}
+            //else
+            //{
+            //    lowerValue = y;
+            //}
+
+            //while (lowerValue > 0)
+            //{
+            //    stack.Push(lowerValue);
+            //    lowerValue -= 1;
+            //}
+
+            //long result = 0;
+
+            //while (stack.Count < 0)
+            //{
+
+            //}
+
 
 
         }

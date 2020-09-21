@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace Factorial
@@ -19,13 +20,31 @@ namespace Factorial
             //}
 
             //ITERATIVE WAY
-            int result = 1;
+            //int result = 1;
 
-            for(int i = 1; i <= n; i++)
+            //for(int i = 1; i <= n; i++)
+            //{
+            //    result = result * i;
+            //}
+            //return result;
+
+            //MANAGING OWN STACK
+            Stack<long> stack = new Stack<long>();
+
+            while(n != 0)
             {
-                result = result * i;
+                stack.Push(n);
+                n = n - 1;
             }
-            return result;
+
+            long result = 0;
+
+            while(stack.Count != 0)
+            {
+                result = result * stack.Pop();
+            }
+            return (int)result; // why cant i hold this as a long and have to cast it as an int if I take out the (int) it give me and error
+
         }
     }
 }
