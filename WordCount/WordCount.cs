@@ -8,38 +8,67 @@ namespace WordCount
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using System.Xml.XPath;
     using NUnit.Framework.Interfaces;
 
     public static class WordCount
     {
         public static IDictionary<string, int> CountWords(string phrase)
         {
-            char[] delimeters = new char[] { ' ', ',', '\n' };
-            string[] splitPhrase = phrase.Split(delimeters, StringSplitOptions.RemoveEmptyEntries);
+            IDictionary<string, int> dictionary = new Dictionary<string, int>();
 
-            Dictionary<string, int> CountTheOccurances = new Dictionary<string, int>();
-            for (int i = 0; i < splitPhrase.Length; i++)                                       // Loop the splited string  
+            string[] splitCharacters =
+                new string[] 
+                {
+                    " ",
+                    ",",
+                    "\n",
+                };
+
+            string[] splitPhrases = phrase.Split(splitCharacters, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string splitPhrase in splitPhrases)
             {
-                if (CountTheOccurances.ContainsKey(splitPhrase[i]))                           // Check if word is already in dictionary update the count  
+                string sanitizedPhrase = SanitizePhrase(splitPhrase);
+
+                if (dictionary.ContainsKey(sanitizedPhrase))
                 {
-                    int value = CountTheOccurances[splitPhrase[i]];
-                    CountTheOccurances[splitPhrase[i]] = value + 1;
+                    dictionary[sanitizedPhrase] += 1;      //indexing into dictionary and give me index of place shown by this phrase
                 }
-                else                                                                     // If we found the same word we just increase the count in the dictionary 
+                else
                 {
-                    CountTheOccurances.Add(splitPhrase[i], 1);
+                    dictionary.Add(sanitizedPhrase, 1);    //add this to the dictionary and increase the value by one
                 }
             }
 
-            foreach (KeyValuePair<string, int> kvp in CountTheOccurances)
+            return dictionary;
+
+        }
+
+        internal static string SanitizePhrase(string splitPhrase)
+        {
+            string[] forbiddenCharacters = 
+                new string[] 
+                {
+                    "!",
+                    "@",
+                    "#",
+                    "$",
+                    "%",
+                    "^",
+                    "&",
+                    "*",
+                    "?",
+                    ":",
+                    ",",
+                    ".",
+                };
+
+            foreach (string forbiddenChar in forbiddenCharacters)
             {
-                string v = $"Counts: {kvp.Value}for {kvp.Key}";
-                return v;
+                splitPhrase = splitPhrase.Replace(forbiddenChar, string.Empty);
             }
-
-
-
-
+            return splitPhrase.ToLower();
         }
     }
 }
