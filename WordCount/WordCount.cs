@@ -68,7 +68,9 @@ namespace WordCount
             {
                 splitPhrase = splitPhrase.Replace(forbiddenChar, string.Empty);
             }
-            return splitPhrase.ToLower();
+            string findQuotes = splitPhrase;
+            string removeQuotes = findQuotes.Trim('\'');  //this is super useful and really interesting to implement
+            return removeQuotes.ToLower();
         }
     }
 }
