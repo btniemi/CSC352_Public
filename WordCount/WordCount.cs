@@ -58,10 +58,19 @@ namespace WordCount
                     "^",
                     "&",
                     "*",
+                    "(",
+                    ")",
                     "?",
                     ":",
                     ",",
                     ".",
+                    "-",
+                    "_",
+                    "~",
+                    "<",
+                    ">",
+                    "/",
+                    "\\",
                 };
 
             foreach (string forbiddenChar in forbiddenCharacters)
@@ -69,7 +78,7 @@ namespace WordCount
                 splitPhrase = splitPhrase.Replace(forbiddenChar, string.Empty);
             }
             string findQuotes = splitPhrase;
-            string removeQuotes = findQuotes.Trim('\'');  //this is super useful and really interesting to implement
+            string removeQuotes = findQuotes.Trim('\'');      //this is super useful and really interesting to implement
             return removeQuotes.ToLower();
         }
     }

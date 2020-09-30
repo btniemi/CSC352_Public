@@ -8,6 +8,7 @@ namespace WordCount
     using NUnit.Framework;
     using NUnit.Framework.Constraints;
     using System.Collections.Generic;
+    using System.ComponentModel;
 
     [TestFixture]
     [Parallelizable(ParallelScope.All)]
@@ -145,6 +146,49 @@ namespace WordCount
                 ["between"] = 1,
                 ["large"] = 2,
                 ["and"] = 1
+            };
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void With_quotations_and_contractions()
+        {
+            IDictionary<string, int> actual = WordCount.CountWords("Joe 'don't' know what is don't.");
+            Dictionary<string, int> expected = new Dictionary<string, int>
+            {
+                ["joe"] = 1,
+                ["don't"] = 2,
+                ["know"] = 1,
+                ["what"] = 1,
+                ["is"] = 1,
+            };
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void With_plural_possive_noun()
+        {
+            IDictionary<string, int> actual = WordCount.CountWords("The cats' meow");
+            Dictionary<string, int> expected = new Dictionary<string, int>
+            {
+                ["the"] = 1,
+                ["cats'"] = 1,  //specific corner case that is hard to represent
+                ["meow"] = 1,
+            };
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void With_quotations_multiwords()
+        {
+            IDictionary<string, int> actual = WordCount.CountWords("Joe 'don't know' what is don't.");
+            Dictionary<string, int> expected = new Dictionary<string, int>
+            {
+                ["joe"] = 1,
+                ["don't"] = 2,
+                ["know"] = 1,
+                ["what"] = 1,
+                ["is"] = 1,
             };
             Assert.That(actual, Is.EqualTo(expected));
         }

@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Factorial", "Factorial\Fact
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Summation", "Summation\Summation.csproj", "{BF0CDBDF-F812-420D-9282-68BB47A4C3C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithClasses", "FunWithClasses\FunWithClasses.csproj", "{B2C007F8-519A-48F4-8E49-6DBB5F1D4557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunWithClasses", "FunWithClasses\FunWithClasses.csproj", "{B2C007F8-519A-48F4-8E49-6DBB5F1D4557}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Windows", "Calculator.Windows\Calculator.Windows.csproj", "{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{B2C007F8-519A-48F4-8E49-6DBB5F1D4557}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2C007F8-519A-48F4-8E49-6DBB5F1D4557}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2C007F8-519A-48F4-8E49-6DBB5F1D4557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
