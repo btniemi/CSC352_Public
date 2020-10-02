@@ -39,10 +39,11 @@
             this.btnNum8 = new System.Windows.Forms.Button();
             this.btnNum9 = new System.Windows.Forms.Button();
             this.btnNum0 = new System.Windows.Forms.Button();
-            this.btnNumPlus = new System.Windows.Forms.Button();
-            this.btnNumMinus = new System.Windows.Forms.Button();
-            this.btnNumMultiple = new System.Windows.Forms.Button();
-            this.btnNumDivision = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnMultiple = new System.Windows.Forms.Button();
+            this.btnDivision = new System.Windows.Forms.Button();
+            this.btnEquals = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNum1
@@ -53,7 +54,6 @@
             this.btnNum1.TabIndex = 0;
             this.btnNum1.Text = "1";
             this.btnNum1.UseVisualStyleBackColor = true;
-            this.btnNum1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnNum2
             // 
@@ -63,6 +63,7 @@
             this.btnNum2.TabIndex = 1;
             this.btnNum2.Text = "2";
             this.btnNum2.UseVisualStyleBackColor = true;
+            this.btnNum2.Click += new System.EventHandler(this.btnNum2_Click);
             // 
             // textBox1
             // 
@@ -79,6 +80,7 @@
             this.btnNum3.TabIndex = 3;
             this.btnNum3.Text = "3";
             this.btnNum3.UseVisualStyleBackColor = true;
+            this.btnNum3.Click += new System.EventHandler(this.btnNum3_Click);
             // 
             // btnNum4
             // 
@@ -88,6 +90,7 @@
             this.btnNum4.TabIndex = 4;
             this.btnNum4.Text = "4";
             this.btnNum4.UseVisualStyleBackColor = true;
+            this.btnNum4.Click += new System.EventHandler(this.btnNum4_Click);
             // 
             // btnNum5
             // 
@@ -97,6 +100,7 @@
             this.btnNum5.TabIndex = 5;
             this.btnNum5.Text = "5";
             this.btnNum5.UseVisualStyleBackColor = true;
+            this.btnNum5.Click += new System.EventHandler(this.btnNum5_Click);
             // 
             // btnNum6
             // 
@@ -106,7 +110,7 @@
             this.btnNum6.TabIndex = 6;
             this.btnNum6.Text = "6";
             this.btnNum6.UseVisualStyleBackColor = true;
-            this.btnNum6.Click += new System.EventHandler(this.button6_Click);
+            this.btnNum6.Click += new System.EventHandler(this.btnNum6_Click);
             // 
             // btnNum7
             // 
@@ -116,6 +120,7 @@
             this.btnNum7.TabIndex = 7;
             this.btnNum7.Text = "7";
             this.btnNum7.UseVisualStyleBackColor = true;
+            this.btnNum7.Click += new System.EventHandler(this.btnNum7_Click);
             // 
             // btnNum8
             // 
@@ -135,6 +140,7 @@
             this.btnNum9.TabIndex = 9;
             this.btnNum9.Text = "9";
             this.btnNum9.UseVisualStyleBackColor = true;
+            this.btnNum9.Click += new System.EventHandler(this.btnNum9_Click);
             // 
             // btnNum0
             // 
@@ -144,54 +150,68 @@
             this.btnNum0.TabIndex = 10;
             this.btnNum0.Text = "0";
             this.btnNum0.UseVisualStyleBackColor = true;
+            this.btnNum0.Click += new System.EventHandler(this.btnNum0_Click);
             // 
-            // btnNumPlus
+            // btnPlus
             // 
-            this.btnNumPlus.Location = new System.Drawing.Point(285, 119);
-            this.btnNumPlus.Name = "btnNumPlus";
-            this.btnNumPlus.Size = new System.Drawing.Size(75, 23);
-            this.btnNumPlus.TabIndex = 11;
-            this.btnNumPlus.Text = "+";
-            this.btnNumPlus.UseVisualStyleBackColor = true;
-            this.btnNumPlus.Click += new System.EventHandler(this.button11_Click);
+            this.btnPlus.Location = new System.Drawing.Point(285, 119);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(75, 23);
+            this.btnPlus.TabIndex = 11;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
             // 
-            // btnNumMinus
+            // btnMinus
             // 
-            this.btnNumMinus.Location = new System.Drawing.Point(286, 148);
-            this.btnNumMinus.Name = "btnNumMinus";
-            this.btnNumMinus.Size = new System.Drawing.Size(75, 23);
-            this.btnNumMinus.TabIndex = 12;
-            this.btnNumMinus.Text = "-";
-            this.btnNumMinus.UseVisualStyleBackColor = true;
-            this.btnNumMinus.Click += new System.EventHandler(this.btnNumMinus_Click);
+            this.btnMinus.Location = new System.Drawing.Point(286, 148);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(75, 23);
+            this.btnMinus.TabIndex = 12;
+            this.btnMinus.Text = "-";
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
-            // btnNumMultiple
+            // btnMultiple
             // 
-            this.btnNumMultiple.Location = new System.Drawing.Point(286, 178);
-            this.btnNumMultiple.Name = "btnNumMultiple";
-            this.btnNumMultiple.Size = new System.Drawing.Size(75, 23);
-            this.btnNumMultiple.TabIndex = 13;
-            this.btnNumMultiple.Text = "*";
-            this.btnNumMultiple.UseVisualStyleBackColor = true;
+            this.btnMultiple.Location = new System.Drawing.Point(286, 178);
+            this.btnMultiple.Name = "btnMultiple";
+            this.btnMultiple.Size = new System.Drawing.Size(75, 23);
+            this.btnMultiple.TabIndex = 13;
+            this.btnMultiple.Text = "*";
+            this.btnMultiple.UseVisualStyleBackColor = true;
+            this.btnMultiple.Click += new System.EventHandler(this.btnMultiple_Click);
             // 
-            // btnNumDivision
+            // btnDivision
             // 
-            this.btnNumDivision.Location = new System.Drawing.Point(285, 208);
-            this.btnNumDivision.Name = "btnNumDivision";
-            this.btnNumDivision.Size = new System.Drawing.Size(75, 23);
-            this.btnNumDivision.TabIndex = 14;
-            this.btnNumDivision.Text = "/";
-            this.btnNumDivision.UseVisualStyleBackColor = true;
+            this.btnDivision.Location = new System.Drawing.Point(285, 208);
+            this.btnDivision.Name = "btnDivision";
+            this.btnDivision.Size = new System.Drawing.Size(75, 23);
+            this.btnDivision.TabIndex = 14;
+            this.btnDivision.Text = "/";
+            this.btnDivision.UseVisualStyleBackColor = true;
+            this.btnDivision.Click += new System.EventHandler(this.btnDivision_Click);
+            // 
+            // btnEquals
+            // 
+            this.btnEquals.Location = new System.Drawing.Point(285, 238);
+            this.btnEquals.Name = "btnEquals";
+            this.btnEquals.Size = new System.Drawing.Size(75, 23);
+            this.btnEquals.TabIndex = 15;
+            this.btnEquals.Text = "=";
+            this.btnEquals.UseVisualStyleBackColor = true;
+            this.btnEquals.Click += new System.EventHandler(this.btnEquals_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 444);
-            this.Controls.Add(this.btnNumDivision);
-            this.Controls.Add(this.btnNumMultiple);
-            this.Controls.Add(this.btnNumMinus);
-            this.Controls.Add(this.btnNumPlus);
+            this.Controls.Add(this.btnEquals);
+            this.Controls.Add(this.btnDivision);
+            this.Controls.Add(this.btnMultiple);
+            this.Controls.Add(this.btnMinus);
+            this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.btnNum0);
             this.Controls.Add(this.btnNum9);
             this.Controls.Add(this.btnNum8);
@@ -203,8 +223,10 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnNum2);
             this.Controls.Add(this.btnNum1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,10 +245,11 @@
         private System.Windows.Forms.Button btnNum8;
         private System.Windows.Forms.Button btnNum9;
         private System.Windows.Forms.Button btnNum0;
-        private System.Windows.Forms.Button btnNumPlus;
-        private System.Windows.Forms.Button btnNumMinus;
-        private System.Windows.Forms.Button btnNumMultiple;
-        private System.Windows.Forms.Button btnNumDivision;
+        private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.Button btnMinus;
+        private System.Windows.Forms.Button btnMultiple;
+        private System.Windows.Forms.Button btnDivision;
+        private System.Windows.Forms.Button btnEquals;
     }
 }
 

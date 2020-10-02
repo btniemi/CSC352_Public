@@ -26,6 +26,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunWithClasses", "FunWithCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Windows", "Calculator.Windows\Calculator.Windows.csproj", "{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Logic", "Calculator.Logic\Calculator.Logic.csproj", "{FC42B4CB-76D0-4A62-B3DB-BD0A6E8B2356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Logic.UnitTests", "Calculator.Logic.UnitTests\Calculator.Logic.UnitTests.csproj", "{BAF6EFBF-0A1D-4F17-AF60-4A60C0AAC71B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,14 @@ Global
 		{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD046B56-9FF5-47FD-A3CF-46C292B7BA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC42B4CB-76D0-4A62-B3DB-BD0A6E8B2356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC42B4CB-76D0-4A62-B3DB-BD0A6E8B2356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC42B4CB-76D0-4A62-B3DB-BD0A6E8B2356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC42B4CB-76D0-4A62-B3DB-BD0A6E8B2356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF6EFBF-0A1D-4F17-AF60-4A60C0AAC71B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF6EFBF-0A1D-4F17-AF60-4A60C0AAC71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF6EFBF-0A1D-4F17-AF60-4A60C0AAC71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF6EFBF-0A1D-4F17-AF60-4A60C0AAC71B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
