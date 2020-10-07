@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,22 +18,65 @@ namespace Calculator.Logic
 
             string[] splitEquation = equation.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach(string token in splitEquation)
+            foreach (string token in splitEquation)
             {
                 if (char.IsNumber(token.First()) || (token.Length > 1 && token.StartsWith("-")))
                 {
                     output.Enqueue(token);
                 }
-                else
+                else if (isOperator(token))
                 {
+                    while
+                        (
+                            operatorStack.Any() &&
+                            (
+                                OperatorHasGreaterPrecidence(operatorStack.Peek(), token)
+                                ||
+                                (OperatorHasEqualPrecidence(operatorStack.Peek(), token) && TokenIsLeftAssociative(token))
+                            )
+                        )
+                    {
+
+                    }
+
+
                     operatorStack.Push(token);
-                    //while statement here to complete this better
+                }
+                else if (token.Equals("("))
+                {
+                    operatorStack.Push("(");
+                }
+                else if (token.Equals(")"))
+                {
+                    try
+                    {
+                        while (operatorStack.Peek() != "(")
+                        {
+                            output.Enqueue(operatorStack.Pop());
+                        }
+                        //Discard Left Paren"("
+                        operatorStack.Pop();
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        throw new InvalidOperationException("Unbalanced Parens!", ex);
+                    }
                 }
             }
 
+            while (operatorStack.Any())
+            {
+                if (operatorStack.Peek() == "(")
+                {
+                    throw new InvalidOperationException("Unbalanced Parens!");
+                }
+                output.Enqueue(operatorStack.Pop());
+            }
+
+
             StringBuilder sb = new StringBuilder();
 
-            foreach(var outputElement in output)
+            foreach (var outputElement in output)
             {
                 sb.Append(outputElement);
                 sb.Append(" ");
@@ -38,8 +84,84 @@ namespace Calculator.Logic
 
             return sb.ToString().TrimEnd();
         }
+
+        private static bool OperatorHasGreaterPrecidence(string v, string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool OperatorHasEqualPrecidence(string v, string token)
+        {
+            bool hasEqualPrecidence = false;
+
+            if (v == token)
+            {
+                hasEqualPrecidence = true;
+            }
+            else if (v == "+" || v == "-")
+            {
+                if (token == "+" || token == "-")
+                {
+                    hasEqualPrecidence = true;
+                }
+            }
+            else if (v == "*" || v == "/")
+            {
+                if (token == "*" || token == "/")
+                {
+                    hasEqualPrecidence = true;
+                }
+            }
+            return hasEqualPrecidence;
+        }
+
+
+        private static bool TokenIsLeftAssociative(string token)
+        {
+            return true;
+        }
+
+        private static bool isOperator(string token)
+        {
+            switch (token)
+            {
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                case "^":
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
 }
+
+
+    //public class OrderOfOperationCompare : IComparer<string>
+    //{
+    //    public int Compare(string x, string y)
+    //    {
+    //        // P(E(MD)(AS) without P
+    //        throw new NotImplementedException();
+
+    //    }
+    //    public int ConvertToValue(string op)
+    //    {
+    //        switch (op)
+    //        {
+    //            case "^":
+    //                {
+    //                    return 4;
+    //                }
+    //        }
+    //    }
+    //}
+
+
+
+
 
 ///* This implementation does not implement composite functions,functions with variable number of arguments, and unary operators. */
 
