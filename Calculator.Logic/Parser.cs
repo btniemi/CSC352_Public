@@ -85,9 +85,25 @@ namespace Calculator.Logic
             return sb.ToString().TrimEnd();
         }
 
-        private static bool OperatorHasGreaterPrecidence(string v, string token)
+        public static bool OperatorHasGreaterPrecidence(string v, string token)
         {
-            throw new NotImplementedException();
+            bool hasGreaterPrecidence = false;
+
+            if(v == "^")
+            {
+                if(token == "+" || token == "-" || token == "*" || token == "/")
+                {
+                    hasGreaterPrecidence = true;
+                }
+            }
+            else if(v == "*" || v == "/")
+            {
+                if(token == "+" || token == "-")
+                {
+                    hasGreaterPrecidence = true;
+                }
+            }
+            return hasGreaterPrecidence;
         }
 
         public static bool OperatorHasEqualPrecidence(string v, string token)
@@ -116,9 +132,14 @@ namespace Calculator.Logic
         }
 
 
-        private static bool TokenIsLeftAssociative(string token)
+        public static bool TokenIsLeftAssociative(string token)
         {
-            return true;
+            bool leftAssociative = true;
+            if(token == "^")
+            {
+                leftAssociative = false;
+            }
+            return leftAssociative;
         }
 
         private static bool isOperator(string token)
@@ -169,7 +190,7 @@ namespace Calculator.Logic
 //    read a token.
 //    if the token is a number, then:
 //        push it to the output queue.
-//    else if the token is a function then:       this is for sign and other functions
+//    else if the token is a function then:       this is for sin and other functions
 //        push it onto the operator stack 
 //    else if the token is an operator then:
 //        while ((there is an operator at the top of the operator stack)

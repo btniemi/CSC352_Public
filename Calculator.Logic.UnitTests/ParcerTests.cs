@@ -11,6 +11,7 @@ namespace Calculator.Logic.UnitTests
     public class ParcerTests
     {
         [TestCase("1 + 1", "1 1 +")]
+        //[TestCase("3 + 4 * 2 / (1 - 5) ^ 2 ^ 3", "3 4 2 * 1 5 - 2 3 ^ ^ / +")]
         public void ConvertToRPN_ValidInput(string input, string expected)
         {
             //Arrange
@@ -33,24 +34,55 @@ namespace Calculator.Logic.UnitTests
         [TestCase("+", "-", true)]
         [TestCase("+", "*", false)]
         [TestCase("+", "/", false)]
-        [TestCase("-", "", )]
-        [TestCase("-", "", )]
-        [TestCase("-", "", )]
-        [TestCase("-", "", )]
-        [TestCase("-", "", )]
-        [TestCase("*", "", )]
-        [TestCase("*", "", )]
-        [TestCase("*", "", )]
-        [TestCase("*", "", )]
-        [TestCase("*", "", )]
-        [TestCase("/", "", )]
-        [TestCase("/", "", )]
-        [TestCase("/", "", )]
-        [TestCase("/", "", )]
-        [TestCase("/", "", )]
+        [TestCase("-", "^", false)]
+        [TestCase("-", "+", true)]
+        [TestCase("-", "-", true)]
+        [TestCase("-", "*", false)]
+        [TestCase("-", "/", false)]
+        [TestCase("*", "^", false)]
+        [TestCase("*", "+", false)]
+        [TestCase("*", "-", false)]
+        [TestCase("*", "*", true)]
+        [TestCase("*", "/", true)]
+        [TestCase("/", "^", false)]
+        [TestCase("/", "+", false)]
+        [TestCase("/", "-", false)]
+        [TestCase("/", "*", true)]
+        [TestCase("/", "/", true)]
         public void OperatorHasEqualPrecidence_ValidInput(string op1, string op2, bool expected)
         {
             bool actual = Parser.OperatorHasEqualPrecidence(op1, op2);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [TestCase("^", "^", false)]
+        [TestCase("^", "+", true)]
+        [TestCase("^", "-", true)]
+        [TestCase("^", "*", true)]
+        [TestCase("^", "/", true)]
+        [TestCase("+", "^", false)]
+        [TestCase("+", "+", false)]
+        [TestCase("+", "-", false)]
+        [TestCase("+", "*", false)]
+        [TestCase("+", "/", false)]
+        [TestCase("-", "^", false)]
+        [TestCase("-", "+", false)]
+        [TestCase("-", "-", false)]
+        [TestCase("-", "*", false)]
+        [TestCase("-", "/", false)]
+        [TestCase("*", "^", false)]
+        [TestCase("*", "+", true)]
+        [TestCase("*", "-", true)]
+        [TestCase("*", "*", false)]
+        [TestCase("*", "/", false)]
+        [TestCase("/", "^", false)]
+        [TestCase("/", "+", true)]
+        [TestCase("/", "-", true)]
+        [TestCase("/", "*", false)]
+        [TestCase("/", "/", false)]
+        public void OperatorHasGreaterPrecidence_ValidInput(string op1, string op2, bool expected)
+        {
+            bool actual = Parser.OperatorHasGreaterPrecidence(op1, op2);
             Assert.That(actual, Is.EqualTo(expected));
         }
     }
