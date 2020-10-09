@@ -54,7 +54,7 @@
             this.btnNum1.TabIndex = 0;
             this.btnNum1.Text = "1";
             this.btnNum1.UseVisualStyleBackColor = true;
-            this.btnNum1.Click += new System.EventHandler(this.btnNum1_Click_1);
+            this.btnNum1.Click += new System.EventHandler(this.btnNum1_Click);
             // 
             // btnNum2
             // 

@@ -13,7 +13,7 @@ namespace Calculator.Logic
     {
         public static string ConvertToRPN(string equation)
         {
-            Queue<string> output = new Queue<string>();
+            Queue<string> outputQueue = new Queue<string>();
             Stack<string> operatorStack = new Stack<string>();
 
             string[] splitEquation = equation.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -22,7 +22,7 @@ namespace Calculator.Logic
             {
                 if (char.IsNumber(token.First()) || (token.Length > 1 && token.StartsWith("-")))
                 {
-                    output.Enqueue(token);
+                    outputQueue.Enqueue(token);
                 }
                 else if (isOperator(token))
                 {
@@ -33,13 +33,13 @@ namespace Calculator.Logic
                                 OperatorHasGreaterPrecidence(operatorStack.Peek(), token)
                                 ||
                                 (OperatorHasEqualPrecidence(operatorStack.Peek(), token) && TokenIsLeftAssociative(token))
-                            )
+                            ) &&
+                            operatorStack.Peek() != "("
                         )
                     {
-
+                        string op = operatorStack.Pop();
+                        outputQueue.Enqueue(op);
                     }
-
-
                     operatorStack.Push(token);
                 }
                 else if (token.Equals("("))
@@ -52,7 +52,7 @@ namespace Calculator.Logic
                     {
                         while (operatorStack.Peek() != "(")
                         {
-                            output.Enqueue(operatorStack.Pop());
+                            outputQueue.Enqueue(operatorStack.Pop());
                         }
                         //Discard Left Paren"("
                         operatorStack.Pop();
@@ -70,13 +70,13 @@ namespace Calculator.Logic
                 {
                     throw new InvalidOperationException("Unbalanced Parens!");
                 }
-                output.Enqueue(operatorStack.Pop());
+                outputQueue.Enqueue(operatorStack.Pop());
             }
 
 
             StringBuilder sb = new StringBuilder();
 
-            foreach (var outputElement in output)
+            foreach (var outputElement in outputQueue)
             {
                 sb.Append(outputElement);
                 sb.Append(" ");
@@ -158,30 +158,6 @@ namespace Calculator.Logic
         }
     }
 }
-
-
-    //public class OrderOfOperationCompare : IComparer<string>
-    //{
-    //    public int Compare(string x, string y)
-    //    {
-    //        // P(E(MD)(AS) without P
-    //        throw new NotImplementedException();
-
-    //    }
-    //    public int ConvertToValue(string op)
-    //    {
-    //        switch (op)
-    //        {
-    //            case "^":
-    //                {
-    //                    return 4;
-    //                }
-    //        }
-    //    }
-    //}
-
-
-
 
 
 ///* This implementation does not implement composite functions,functions with variable number of arguments, and unary operators. */
