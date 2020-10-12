@@ -12,18 +12,16 @@ namespace Calculator.Logic
 
         public static double EvaluateRPN(string rpn)
         {
-            Stack<string> evalStack = new Stack<string>();
+            Stack<double> evalStack = new Stack<double>();
             string[] splitRPN = rpn.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string token in splitRPN)
             {
-                evalStack.Push(token);
 
                 if (isOperator(token))
                 {
-                    evalStack.Pop();
-                    double y = Double.Parse(evalStack.Pop());
-                    double x = Double.Parse(evalStack.Pop());
+                    double y = evalStack.Pop();
+                    double x = evalStack.Pop();
                     double z = 0;
                     if (token == "^")
                     {
@@ -45,11 +43,14 @@ namespace Calculator.Logic
                     {
                         z = x / y;
                     }
-                    evalStack.Push(z.ToString());
+                    evalStack.Push(z);
+                }
+                else
+                {
+                    evalStack.Push(double.Parse(token));
                 }
             }
-            string finalValue = evalStack.Pop();
-            return Double.Parse(finalValue);
+            return evalStack.Pop();
         }
 
         //Read the postfix expression token by token
