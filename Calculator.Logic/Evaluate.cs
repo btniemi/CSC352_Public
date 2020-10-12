@@ -63,8 +63,9 @@ namespace Calculator.Logic
 
         public static double EvaluateInfix(string infix)
         {
-            throw new NotSupportedException();
-            // put into RPN and then call EvaluateRPN
+            string conversion = Parser.ConvertToRPN(infix);
+            double answer = EvaluateRPN(conversion);
+            return answer;
         }
 
         private static bool isOperator(string token)
