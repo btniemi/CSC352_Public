@@ -11,6 +11,8 @@ namespace Calculator.Logic.UnitTests
     class EvaluateTests
     {
         [TestCase("1 1 +", 2)]
+        [TestCase("1 2 3 + -", 4)]
+        [TestCase("3 4 2 * 1 5 - 2 3 ^ ^ / +", 3.0001220703125)]
         public void Evaluate_ValidInput(string input, double expected)
         {
             //Arrange
