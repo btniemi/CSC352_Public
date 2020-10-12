@@ -9,7 +9,6 @@ namespace Calculator.Logic
 {
     public class Evaluate
     {
-
         public static double EvaluateRPN(string rpn)
         {
             Stack<double> evalStack = new Stack<double>();
