@@ -85,6 +85,7 @@ namespace Calculator.Logic
             return sb.ToString().TrimEnd();
         }
 
+
         public static bool OperatorHasGreaterPrecidence(string v, string token)
         {
             bool hasGreaterPrecidence = false;

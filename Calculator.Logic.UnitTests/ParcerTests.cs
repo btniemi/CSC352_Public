@@ -13,7 +13,7 @@ namespace Calculator.Logic.UnitTests
         [TestCase("1 + 1", "1 1 +")]
         [TestCase("( 2 + 2 ) ^ 2", "2 2 + 2 ^")]
         [TestCase("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3", "3 4 2 * 1 5 - 2 3 ^ ^ / +")]
-        [TestCase("1 + 2 + 3", "1 2 3 + +" )] // does not work but is RPN equivalant
+        //[TestCase("1 + 2 + 3", "123++" )] // does not work but is RPN equivalant
         [TestCase("1 + 2 + 3", "1 2 + 3 +")]
 
         public void ConvertToRPN_ValidInput(string input, string expected)
