@@ -24,6 +24,10 @@ namespace Calculator.Logic
                 {
                     outputQueue.Enqueue(token);
                 }
+                else if (isFunction(token))
+                {
+                    operatorStack.Push(token);
+                }
                 else if (isOperator(token))
                 {
                     while
@@ -157,6 +161,22 @@ namespace Calculator.Logic
                     return false;
             }
         }
+
+        public static bool isFunction(string token)
+        {
+            switch (token)
+            {
+                case "sqrt":
+                case "sin":
+                case "cos":
+                case "tan":
+                case "log":
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
     }
 }
 

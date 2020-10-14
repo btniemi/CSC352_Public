@@ -30,7 +30,7 @@
         {
             this.btnNum1 = new System.Windows.Forms.Button();
             this.btnNum2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxInput = new System.Windows.Forms.TextBox();
             this.btnNum3 = new System.Windows.Forms.Button();
             this.btnNum4 = new System.Windows.Forms.Button();
             this.btnNum5 = new System.Windows.Forms.Button();
@@ -44,11 +44,13 @@
             this.btnMultiple = new System.Windows.Forms.Button();
             this.btnDivision = new System.Windows.Forms.Button();
             this.btnEquals = new System.Windows.Forms.Button();
+            this.btnExpoent = new System.Windows.Forms.Button();
+            this.history = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnNum1
             // 
-            this.btnNum1.Location = new System.Drawing.Point(40, 119);
+            this.btnNum1.Location = new System.Drawing.Point(12, 148);
             this.btnNum1.Name = "btnNum1";
             this.btnNum1.Size = new System.Drawing.Size(75, 23);
             this.btnNum1.TabIndex = 0;
@@ -58,7 +60,7 @@
             // 
             // btnNum2
             // 
-            this.btnNum2.Location = new System.Drawing.Point(121, 119);
+            this.btnNum2.Location = new System.Drawing.Point(93, 148);
             this.btnNum2.Name = "btnNum2";
             this.btnNum2.Size = new System.Drawing.Size(75, 23);
             this.btnNum2.TabIndex = 1;
@@ -66,16 +68,16 @@
             this.btnNum2.UseVisualStyleBackColor = true;
             this.btnNum2.Click += new System.EventHandler(this.btnNum2_Click);
             // 
-            // textBox1
+            // textBoxInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(40, 87);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(320, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBoxInput.Location = new System.Drawing.Point(12, 87);
+            this.textBoxInput.Name = "textBoxInput";
+            this.textBoxInput.Size = new System.Drawing.Size(320, 20);
+            this.textBoxInput.TabIndex = 2;
             // 
             // btnNum3
             // 
-            this.btnNum3.Location = new System.Drawing.Point(203, 118);
+            this.btnNum3.Location = new System.Drawing.Point(175, 147);
             this.btnNum3.Name = "btnNum3";
             this.btnNum3.Size = new System.Drawing.Size(75, 23);
             this.btnNum3.TabIndex = 3;
@@ -85,7 +87,7 @@
             // 
             // btnNum4
             // 
-            this.btnNum4.Location = new System.Drawing.Point(40, 149);
+            this.btnNum4.Location = new System.Drawing.Point(12, 178);
             this.btnNum4.Name = "btnNum4";
             this.btnNum4.Size = new System.Drawing.Size(75, 23);
             this.btnNum4.TabIndex = 4;
@@ -95,7 +97,7 @@
             // 
             // btnNum5
             // 
-            this.btnNum5.Location = new System.Drawing.Point(122, 149);
+            this.btnNum5.Location = new System.Drawing.Point(94, 178);
             this.btnNum5.Name = "btnNum5";
             this.btnNum5.Size = new System.Drawing.Size(75, 23);
             this.btnNum5.TabIndex = 5;
@@ -105,7 +107,7 @@
             // 
             // btnNum6
             // 
-            this.btnNum6.Location = new System.Drawing.Point(204, 148);
+            this.btnNum6.Location = new System.Drawing.Point(176, 177);
             this.btnNum6.Name = "btnNum6";
             this.btnNum6.Size = new System.Drawing.Size(75, 23);
             this.btnNum6.TabIndex = 6;
@@ -115,7 +117,7 @@
             // 
             // btnNum7
             // 
-            this.btnNum7.Location = new System.Drawing.Point(40, 179);
+            this.btnNum7.Location = new System.Drawing.Point(12, 208);
             this.btnNum7.Name = "btnNum7";
             this.btnNum7.Size = new System.Drawing.Size(75, 23);
             this.btnNum7.TabIndex = 7;
@@ -125,7 +127,7 @@
             // 
             // btnNum8
             // 
-            this.btnNum8.Location = new System.Drawing.Point(122, 179);
+            this.btnNum8.Location = new System.Drawing.Point(94, 208);
             this.btnNum8.Name = "btnNum8";
             this.btnNum8.Size = new System.Drawing.Size(75, 23);
             this.btnNum8.TabIndex = 8;
@@ -135,7 +137,7 @@
             // 
             // btnNum9
             // 
-            this.btnNum9.Location = new System.Drawing.Point(203, 178);
+            this.btnNum9.Location = new System.Drawing.Point(175, 207);
             this.btnNum9.Name = "btnNum9";
             this.btnNum9.Size = new System.Drawing.Size(75, 23);
             this.btnNum9.TabIndex = 9;
@@ -145,7 +147,7 @@
             // 
             // btnNum0
             // 
-            this.btnNum0.Location = new System.Drawing.Point(122, 209);
+            this.btnNum0.Location = new System.Drawing.Point(94, 238);
             this.btnNum0.Name = "btnNum0";
             this.btnNum0.Size = new System.Drawing.Size(75, 23);
             this.btnNum0.TabIndex = 10;
@@ -155,7 +157,7 @@
             // 
             // btnPlus
             // 
-            this.btnPlus.Location = new System.Drawing.Point(285, 119);
+            this.btnPlus.Location = new System.Drawing.Point(256, 118);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(75, 23);
             this.btnPlus.TabIndex = 11;
@@ -165,7 +167,7 @@
             // 
             // btnMinus
             // 
-            this.btnMinus.Location = new System.Drawing.Point(286, 148);
+            this.btnMinus.Location = new System.Drawing.Point(256, 148);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(75, 23);
             this.btnMinus.TabIndex = 12;
@@ -175,7 +177,7 @@
             // 
             // btnMultiple
             // 
-            this.btnMultiple.Location = new System.Drawing.Point(286, 178);
+            this.btnMultiple.Location = new System.Drawing.Point(256, 178);
             this.btnMultiple.Name = "btnMultiple";
             this.btnMultiple.Size = new System.Drawing.Size(75, 23);
             this.btnMultiple.TabIndex = 13;
@@ -185,7 +187,7 @@
             // 
             // btnDivision
             // 
-            this.btnDivision.Location = new System.Drawing.Point(285, 208);
+            this.btnDivision.Location = new System.Drawing.Point(256, 207);
             this.btnDivision.Name = "btnDivision";
             this.btnDivision.Size = new System.Drawing.Size(75, 23);
             this.btnDivision.TabIndex = 14;
@@ -195,7 +197,7 @@
             // 
             // btnEquals
             // 
-            this.btnEquals.Location = new System.Drawing.Point(285, 238);
+            this.btnEquals.Location = new System.Drawing.Point(175, 238);
             this.btnEquals.Name = "btnEquals";
             this.btnEquals.Size = new System.Drawing.Size(75, 23);
             this.btnEquals.TabIndex = 15;
@@ -203,11 +205,31 @@
             this.btnEquals.UseVisualStyleBackColor = true;
             this.btnEquals.Click += new System.EventHandler(this.btnEquals_Click);
             // 
+            // btnExpoent
+            // 
+            this.btnExpoent.Location = new System.Drawing.Point(13, 238);
+            this.btnExpoent.Name = "btnExpoent";
+            this.btnExpoent.Size = new System.Drawing.Size(75, 23);
+            this.btnExpoent.TabIndex = 16;
+            this.btnExpoent.Text = "^";
+            this.btnExpoent.UseVisualStyleBackColor = true;
+            this.btnExpoent.Click += new System.EventHandler(this.btnExpoent_Click);
+            // 
+            // history
+            // 
+            this.history.Location = new System.Drawing.Point(12, 12);
+            this.history.Multiline = true;
+            this.history.Name = "history";
+            this.history.Size = new System.Drawing.Size(320, 69);
+            this.history.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 444);
+            this.Controls.Add(this.history);
+            this.Controls.Add(this.btnExpoent);
             this.Controls.Add(this.btnEquals);
             this.Controls.Add(this.btnDivision);
             this.Controls.Add(this.btnMultiple);
@@ -221,7 +243,7 @@
             this.Controls.Add(this.btnNum5);
             this.Controls.Add(this.btnNum4);
             this.Controls.Add(this.btnNum3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxInput);
             this.Controls.Add(this.btnNum2);
             this.Controls.Add(this.btnNum1);
             this.KeyPreview = true;
@@ -237,7 +259,7 @@
 
         private System.Windows.Forms.Button btnNum1;
         private System.Windows.Forms.Button btnNum2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxInput;
         private System.Windows.Forms.Button btnNum3;
         private System.Windows.Forms.Button btnNum4;
         private System.Windows.Forms.Button btnNum5;
@@ -251,6 +273,8 @@
         private System.Windows.Forms.Button btnMultiple;
         private System.Windows.Forms.Button btnDivision;
         private System.Windows.Forms.Button btnEquals;
+        private System.Windows.Forms.Button btnExpoent;
+        private System.Windows.Forms.TextBox history;
     }
 }
 

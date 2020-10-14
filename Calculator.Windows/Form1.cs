@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Calculator.Logic;
 
 namespace Calculator.Windows
 {
@@ -23,81 +24,92 @@ namespace Calculator.Windows
 //what the button prints out
         private void btnNum1_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "1";
+            this.textBoxInput.Text += "1";
         }
 
         private void btnNum2_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "2";
+            this.textBoxInput.Text += "2";
         }
 
         private void btnNum3_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "3";
+            this.textBoxInput.Text += "3";
         }
 
         private void btnNum4_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "4";
+            this.textBoxInput.Text += "4";
         }
 
         private void btnNum5_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "5";
+            this.textBoxInput.Text += "5";
         }
 
         private void btnNum6_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "6";
+            this.textBoxInput.Text += "6";
         }
 
         private void btnNum7_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "7";
+            this.textBoxInput.Text += "7";
         }
 
         private void btnNum8_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "8";
+            this.textBoxInput.Text += "8";
         }
 
         private void btnNum9_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "9";
+            this.textBoxInput.Text += "9";
         }
 
         private void btnNum0_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "0";
+            this.textBoxInput.Text += "0";
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "+";
+            this.textBoxInput.Text += " + ";
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "-";
+            this.textBoxInput.Text += " - ";
         }
 
         private void btnMultiple_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "*";
+            this.textBoxInput.Text += " * ";
         }
 
         private void btnDivision_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "/";
+            this.textBoxInput.Text += " / ";
         }
         private void btnEquals_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "=";
+            //
+            string rpn = Parser.ConvertToRPN(this.textBoxInput.Text);
+            this.history.Text +=  "\n" + rpn + "\r";  //or Environment.NewLine
+
+            //Evaluate RPN
+            double result = Evaluate.EvaluateRPN(rpn);
+
+            this.textBoxInput.Text = result.ToString();
+        }
+        private void btnExpoent_Click(object sender, EventArgs e)
+        {
+            this.textBoxInput.Text += " ^ ";
         }
 
 
 
-//switch case for how buttons operate
+        //switch case for how buttons operate
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             Console.WriteLine($"Recieved {e.KeyCode}");
@@ -198,7 +210,6 @@ namespace Calculator.Windows
                     }
             }
         }
-
 
 
     }

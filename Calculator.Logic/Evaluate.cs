@@ -14,6 +14,14 @@ namespace Calculator.Logic
             Stack<double> evalStack = new Stack<double>();
             string[] splitRPN = rpn.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
+            //Read the postfix expression token by token
+            //  If the token is an operand, push it onto the stack
+            //  If the token is a binary operator,
+            //      Pop the two topmost operands from the stack
+            //      Apply the binary operator to the two operands
+            //      Push the result back onto the stack
+            //  Finally, the value of the whole postfix expression remains in the stack
+
             foreach (string token in splitRPN)
             {
 
@@ -52,13 +60,6 @@ namespace Calculator.Logic
             return evalStack.Pop();
         }
 
-        //Read the postfix expression token by token
-        //  If the token is an operand, push it onto the stack
-        //  If the token is a binary operator,
-        //      Pop the two topmost operands from the stack
-        //      Apply the binary operator to the two operands
-        //      Push the result back onto the stack
-        //  Finally, the value of the whole postfix expression remains in the stack
 
         public static double EvaluateInfix(string infix)
         {
