@@ -111,6 +111,27 @@ namespace Calculator.Logic
             return hasGreaterPrecidence;
         }
 
+        public static bool ConvertToInfix(string rpn)
+        {
+            string[] splitRPN = rpn.Split(new string[] { " " },StringSplitOptions.RemoveEmptyEntries);
+            Stack<string> outputStack = new Stack<string>(); 
+
+            for (int i = 0; i < splitRPN.Length; i++)
+            {
+                string currentToken = splitRPN[i];
+                if (isOperator(currentToken))
+                {
+                    // logic in here to pop the 2 left and right off the stack and create a new string from them remember spaces
+                    // also need to look ahead if is operator pop, pop left/right and conncatination
+                }
+                else
+                {
+                    outputStack.Push(currentToken);
+                }
+                
+            }
+        }
+
         public static bool OperatorHasEqualPrecidence(string v, string token)
         {
             bool hasEqualPrecidence = false;
