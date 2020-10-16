@@ -93,7 +93,7 @@ namespace Calculator.Windows
         }
         private void btnEquals_Click(object sender, EventArgs e)
         {
-            //
+            // save to history
             string rpn = Parser.ConvertToRPN(this.textBoxInput.Text);
             this.history.Text +=  "\n" + rpn + "\r";  //or Environment.NewLine
 
