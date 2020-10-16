@@ -92,5 +92,12 @@ namespace Calculator.Logic.UnitTests
             bool actual = Parser.OperatorHasGreaterPrecidence(op1, op2);
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [TestCase("3 1 + 2 *", "( 3 + 1 ) * 2")]
+        public void ConvertToInfix_ValidInput(string rpn, bool expected)
+        {
+            bool actual = Parser.ConvertToInfix(rpn);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }
