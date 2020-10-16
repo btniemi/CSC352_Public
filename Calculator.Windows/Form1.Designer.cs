@@ -46,6 +46,7 @@
             this.btnEquals = new System.Windows.Forms.Button();
             this.btnExpoent = new System.Windows.Forms.Button();
             this.history = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNum1
@@ -72,6 +73,7 @@
             // 
             this.textBoxInput.Location = new System.Drawing.Point(12, 87);
             this.textBoxInput.Name = "textBoxInput";
+            this.textBoxInput.ReadOnly = true;
             this.textBoxInput.Size = new System.Drawing.Size(320, 20);
             this.textBoxInput.TabIndex = 2;
             // 
@@ -223,11 +225,22 @@
             this.history.Size = new System.Drawing.Size(320, 69);
             this.history.TabIndex = 17;
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(257, 237);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 18;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 444);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.history);
             this.Controls.Add(this.btnExpoent);
             this.Controls.Add(this.btnEquals);
@@ -275,6 +288,7 @@
         private System.Windows.Forms.Button btnEquals;
         private System.Windows.Forms.Button btnExpoent;
         private System.Windows.Forms.TextBox history;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

@@ -106,7 +106,21 @@ namespace Calculator.Windows
         {
             this.textBoxInput.Text += " ^ ";
         }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.textBoxInput.Text = string.Empty;
+        }
 
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            bool wasHandled = false;
+            if (keyData == Keys.Enter)
+            {
+                wasHandled = true;
+            }
+            return wasHandled;
+        }
 
 
         //switch case for how buttons operate
@@ -201,6 +215,12 @@ namespace Calculator.Windows
                             // Equals
                             btnEquals_Click(sender, e);
                         }
+                        break;
+                    }
+                case Keys.Return:
+                    {
+                        btnEquals_Click(this, e);
+                        e.Handled = true;
                         break;
                     }
                 default:
