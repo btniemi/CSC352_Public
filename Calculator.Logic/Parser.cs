@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.SqlServer.Server;
 
 namespace Calculator.Logic
 {
@@ -20,7 +21,7 @@ namespace Calculator.Logic
 
             foreach (string token in splitEquation)
             {
-                if (char.IsNumber(token.First()) || (token.Length > 1 && token.StartsWith("-")))
+                if (char.IsNumber(token.First()) || (token.Length > 1 && token.StartsWith("-") || token.StartsWith(".")))
                 {
                     outputQueue.Enqueue(token);
                 }
@@ -90,28 +91,8 @@ namespace Calculator.Logic
         }
 
 
-        public static bool OperatorHasGreaterPrecidence(string v, string token)
-        {
-            bool hasGreaterPrecidence = false;
 
-            if(v == "^")
-            {
-                if(token == "+" || token == "-" || token == "*" || token == "/")
-                {
-                    hasGreaterPrecidence = true;
-                }
-            }
-            else if(v == "*" || v == "/")
-            {
-                if(token == "+" || token == "-")
-                {
-                    hasGreaterPrecidence = true;
-                }
-            }
-            return hasGreaterPrecidence;
-        }
-
-        public static bool ConvertToInfix(string rpn)
+        public static string ConvertToInfix(string rpn)
         {
             string[] splitRPN = rpn.Split(new string[] { " " },StringSplitOptions.RemoveEmptyEntries);
             Stack<string> outputStack = new Stack<string>(); 
@@ -122,14 +103,55 @@ namespace Calculator.Logic
                 if (isOperator(currentToken))
                 {
                     // logic in here to pop the 2 left and right off the stack and create a new string from them remember spaces
-                    // also need to look ahead if is operator pop, pop left/right and conncatination
+                    string right = outputStack.Pop();
+                    string left = outputStack.Pop();
+                    string oper = currentToken;
+                    string result = left + " " + oper + " " + right;
+
+                    // also need to look ahead if is operator is next (pop left/right and conncatination)
+                    for(int j = i + 1; j < splitRPN.Length; j++)
+                    {
+                        string lookAhead = splitRPN[j];
+                        if (isOperator(lookAhead))
+                        {
+                            if (OperatorHasGreaterPrecidence(lookAhead, currentToken))
+                            {
+                                result = "( " + left + " " + oper + " " + right + " )";
+                            }
+                            break;
+                        }
+                    }
+                    outputStack.Push(result);
                 }
                 else
                 {
                     outputStack.Push(currentToken);
                 }
-                
             }
+            return outputStack.Pop();
+        }
+
+
+
+        public static bool OperatorHasGreaterPrecidence(string v, string token)
+        {
+            bool hasGreaterPrecidence = false;
+
+            if (v == "^")
+            {
+                if (token == "+" || token == "-" || token == "*" || token == "/")
+                {
+                    hasGreaterPrecidence = true;
+                }
+            }
+            else if (v == "*" || v == "/")
+            {
+                if (token == "+" || token == "-")
+                {
+                    hasGreaterPrecidence = true;
+                }
+            }
+            return hasGreaterPrecidence;
         }
 
         public static bool OperatorHasEqualPrecidence(string v, string token)
@@ -183,6 +205,7 @@ namespace Calculator.Logic
             }
         }
 
+        //functions I want to implement eventually if possible
         public static bool isFunction(string token)
         {
             switch (token)
@@ -191,7 +214,16 @@ namespace Calculator.Logic
                 case "sin":
                 case "cos":
                 case "tan":
+                case "sec":
+                case "csc":
+                case "cot":
+                case "mod":
+                case "exp":
+                case "abs":
                 case "log":
+                case "ln":
+                case "π":
+                case "e":
                     return true;
                 default:
                     return false;
