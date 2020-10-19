@@ -10,16 +10,16 @@ namespace Calculator.Logic.UnitTests
     [TestFixture]
     public class ParcerTests
     {
+        //[TestCase("1 + 2 + 3", "123++" )] // does not work but is RPN equivalant
         [TestCase("1 + 1", "1 1 +")]
         [TestCase("( 2 + 2 ) ^ 2", "2 2 + 2 ^")]
         [TestCase("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3", "3 4 2 * 1 5 - 2 3 ^ ^ / +")]
-        //[TestCase("1 + 2 + 3", "123++" )] // does not work but is RPN equivalant
         [TestCase("1 + 2 + 3", "1 2 + 3 +")]
         [TestCase("1 + sqrt ( 4 )", "1 4 sqrt +")]
         [TestCase("1 + sqrt ( 2 ^ 2 )", "1 2 2 ^ sqrt +")]
         [TestCase("1 + sqrt ( sqrt ( ( 2 ^ 2 + 2 ) ) )", "1 2 2 ^ 2 + sqrt sqrt +")]
-        [TestCase("1 + .4)", "1 .4 +")]  // have not handled decimals correctly
-        [TestCase("1 + 0.4)", "1 0.4 +")] // have not handled decimals correctly
+        [TestCase("1 + .4", "1 .4 +")]
+        [TestCase("1 + 0.4", "1 0.4 +")]
 
         public void ConvertToRPN_ValidInput(string input, string expected)
         {

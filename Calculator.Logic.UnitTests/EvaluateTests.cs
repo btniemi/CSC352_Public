@@ -13,6 +13,7 @@ namespace Calculator.Logic.UnitTests
         [TestCase("1 1 +", 2)]
         [TestCase("1 2 3 + -", -4)]
         [TestCase("3 4 2 * 1 5 - 2 3 ^ ^ / +", 3.0001220703125)]
+        [TestCase("3 3 3 + +", 9)]
         public void EvaluateRPN_ValidInput(string input, double expected)
         {
             //Arrange

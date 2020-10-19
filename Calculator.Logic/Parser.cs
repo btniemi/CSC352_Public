@@ -21,7 +21,7 @@ namespace Calculator.Logic
 
             foreach (string token in splitEquation)
             {
-                if (char.IsNumber(token.First()) || (token.Length > 1 && token.StartsWith("-") || token.StartsWith(".")))
+                if (char.IsNumber(token.First()) || (token.Length > 1 && token.StartsWith("-")))
                 {
                     outputQueue.Enqueue(token);
                 }
@@ -90,8 +90,6 @@ namespace Calculator.Logic
             return sb.ToString().TrimEnd();
         }
 
-
-
         public static string ConvertToInfix(string rpn)
         {
             string[] splitRPN = rpn.Split(new string[] { " " },StringSplitOptions.RemoveEmptyEntries);
@@ -130,8 +128,6 @@ namespace Calculator.Logic
             }
             return outputStack.Pop();
         }
-
-
 
         public static bool OperatorHasGreaterPrecidence(string v, string token)
         {
@@ -190,7 +186,7 @@ namespace Calculator.Logic
             return leftAssociative;
         }
 
-        private static bool isOperator(string token)
+        internal static bool isOperator(string token)
         {
             switch (token)
             {
@@ -211,6 +207,8 @@ namespace Calculator.Logic
             switch (token)
             {
                 case "sqrt":
+                case "min":
+                case "max":
                 case "sin":
                 case "cos":
                 case "tan":
