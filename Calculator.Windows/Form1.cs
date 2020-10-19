@@ -91,17 +91,6 @@ namespace Calculator.Windows
         {
             this.textBoxInput.Text += " / ";
         }
-        private void btnEquals_Click(object sender, EventArgs e)
-        {
-            // save to history
-            string rpn = Parser.ConvertToRPN(this.textBoxInput.Text);
-            this.history.Text +=  "\n" + rpn + "\r";  //or Environment.NewLine
-
-            //Evaluate RPN
-            double result = Evaluate.EvaluateRPN(rpn);
-
-            this.textBoxInput.Text = result.ToString();
-        }
         private void btnExpoent_Click(object sender, EventArgs e)
         {
             this.textBoxInput.Text += " ^ ";
@@ -109,6 +98,35 @@ namespace Calculator.Windows
         private void btnClear_Click(object sender, EventArgs e)
         {
             this.textBoxInput.Text = string.Empty;
+        }
+        private void btnLeftParen_Click(object sender, EventArgs e)
+        {
+            this.textBoxInput.Text += " ( ";
+        }
+        private void btnRightParen_Click(object sender, EventArgs e)
+        {
+            this.textBoxInput.Text += " ) ";
+        }
+        private void btnDecimal_Click(object sender, EventArgs e)
+        {
+            this.textBoxInput.Text += ".";
+        }
+
+
+
+
+
+
+        private void btnEquals_Click(object sender, EventArgs e)
+        {
+            // save to history
+            string rpn = Parser.ConvertToRPN(this.textBoxInput.Text);
+            this.history.Text += "\n" + Parser.ConvertToInfix(rpn) + "\r";
+
+            //Evaluate RPN
+            double result = Evaluate.EvaluateRPN(rpn);
+
+            this.textBoxInput.Text = result.ToString();
         }
 
 
@@ -131,6 +149,17 @@ namespace Calculator.Windows
             switch (e.KeyCode)
             {
                 case Keys.D0:
+                    {
+                        if (e.Shift)
+                        {
+                            btnLeftParen_Click(sender, e);
+                        }
+                        else
+                        {
+                            btnNum0_Click(sender, e);
+                        }
+                        break;
+                    }
                 case Keys.NumPad0:
                     {
                         btnNum0_Click(sender, e);
@@ -198,6 +227,17 @@ namespace Calculator.Windows
                         break;
                     }
                 case Keys.D9:
+                    {
+                        if (e.Shift)
+                        {
+                            btnRightParen_Click(sender, e);
+                        }
+                        else
+                        {
+                            btnNum9_Click(sender, e);
+                        }
+                        break;
+                    }
                 case Keys.NumPad9:
                     {
                         btnNum9_Click(sender, e);
@@ -223,6 +263,41 @@ namespace Calculator.Windows
                         e.Handled = true;
                         break;
                     }
+                case Keys.Add:
+                    {
+                        btnPlus_Click(sender, e);
+                    }
+                    break;
+                case Keys.Subtract:
+                    {
+                        btnMinus_Click(sender, e);
+                    }
+                    break;
+                case Keys.Multiply:
+                    {
+                        btnMultiple_Click(sender, e);
+                    }
+                    break;
+                case Keys.Divide:
+                    {
+                        btnDivision_Click(sender, e);
+                    }
+                    break;
+                case Keys.OemPeriod:
+                    {
+                        btnDecimal_Click(sender, e);
+                    }
+                    break;
+                case Keys.Decimal:
+                    {
+                        btnDecimal_Click(sender, e);
+                    }
+                    break;
+                case Keys.Delete:
+                    {
+                        btnClear_Click(sender, e);
+                    }
+                    break;
                 default:
                     {
                         //Do Nothing
