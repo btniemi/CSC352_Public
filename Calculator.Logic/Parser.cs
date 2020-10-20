@@ -21,7 +21,7 @@ namespace Calculator.Logic
 
             foreach (string token in splitEquation)
             {
-                if (char.IsNumber(token.First()) || (token.Length > 1 && token.StartsWith("-")))
+                if (char.IsNumber(token.First()) || (token.Length > 1 && token.StartsWith("-") || token.StartsWith(".")))
                 {
                     outputQueue.Enqueue(token);
                 }
@@ -175,7 +175,6 @@ namespace Calculator.Logic
             return hasEqualPrecidence;
         }
 
-
         public static bool TokenIsLeftAssociative(string token)
         {
             bool leftAssociative = true;
@@ -202,7 +201,7 @@ namespace Calculator.Logic
         }
 
         //functions I want to implement eventually if possible
-        public static bool isFunction(string token)
+        internal static bool isFunction(string token)
         {
             switch (token)
             {

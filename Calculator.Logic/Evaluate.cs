@@ -60,6 +60,77 @@ namespace Calculator.Logic
             return evalStack.Pop();
         }
 
+        public static string EvaluateRPN_StepByStepInfix(string rpn)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Parser.ConvertToInfix(rpn));
+            Stack<double> evalStack = new Stack<double>();
+            string[] tokens = rpn.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+
+            for(int i=0; i<tokens.Length; i++)
+            {
+                string token = tokens[i];
+                if (isOperator(token))
+                {
+                    double y = evalStack.Pop();
+                    double x = evalStack.Pop();
+                    double z = 0;
+                    if (token == "^")
+                    {
+                        z = Math.Pow(x, y);
+                        sb.Append($"Raise {x} to the {y} Power to get {z}");
+                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
+                    }
+                    if (token == "+")
+                    {
+                        z = x + y;
+                        sb.Append($"Add {x} and {y} to get {z}");
+                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
+                    }
+                    if (token == "-")
+                    {
+                        z = x - y;
+                        sb.Append($"Subtract {y} from {x} to get {z}");
+                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
+                    }
+                    if (token == "*")
+                    {
+                        z = x * y;
+                        sb.Append($"Multiply {x} by {y} to get {z}");
+                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
+                    }
+                    if (token == "/")
+                    {
+                        z = x / y;
+                        sb.Append($"Divide {x} by {y} to get {z}");
+                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i+ 1))));
+                    }
+                    evalStack.Push(z);
+                }
+                else
+                {
+                    evalStack.Push(double.Parse(token));
+                }
+            }
+            sb.Append(evalStack.Pop());
+            return sb.ToString();
+        }
+
+        private static string GenerateCurrentRPN(Stack<double> evalStack, IEnumerable<string> enumerable)
+        {
+            StringBuilder currentRPN = new StringBuilder();
+
+            foreach(var current in evalStack)
+            {
+                currentRPN.Append($"{current} ");
+            }
+            foreach(var current in enumerable)
+            {
+                currentRPN.Append($"{current} ");
+            }
+            return currentRPN.ToString().Trim();
+        }
 
         public static double EvaluateInfix(string infix)
         {

@@ -18,8 +18,8 @@ namespace Calculator.Logic.UnitTests
         [TestCase("1 + sqrt ( 4 )", "1 4 sqrt +")]
         [TestCase("1 + sqrt ( 2 ^ 2 )", "1 2 2 ^ sqrt +")]
         [TestCase("1 + sqrt ( sqrt ( ( 2 ^ 2 + 2 ) ) )", "1 2 2 ^ 2 + sqrt sqrt +")]
-        [TestCase("1 + .4", "1 .4 +")]
         [TestCase("1 + 0.4", "1 0.4 +")]
+        [TestCase("1 + .4", "1 .4 +")]
 
         public void ConvertToRPN_ValidInput(string input, string expected)
         {
@@ -97,6 +97,7 @@ namespace Calculator.Logic.UnitTests
 
         [TestCase("3 1 + 2 *", "( 3 + 1 ) * 2")]
         [TestCase("3 1 +", "3 + 1")]
+        [TestCase("3 4 2 * 1 5 - 2 3 ^ ^ / +", "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3")]
         public void ConvertToInfix_ValidInput(string rpn, string expected)
         {
             string actual = Parser.ConvertToInfix(rpn);
