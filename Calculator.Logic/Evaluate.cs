@@ -63,7 +63,7 @@ namespace Calculator.Logic
         public static string EvaluateRPN_StepByStepInfix(string rpn)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(Parser.ConvertToInfix(rpn));
+            sb.AppendLine(Parser.ConvertToInfix(rpn));
             Stack<double> evalStack = new Stack<double>();
             string[] tokens = rpn.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -79,53 +79,62 @@ namespace Calculator.Logic
                     if (token == "^")
                     {
                         z = Math.Pow(x, y);
-                        sb.Append($"Raise {x} to the {y} Power to get {z}");
-                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
+                        sb.AppendLine($"Raise {x} to the {y} Power to get {z}");
                     }
-                    if (token == "+")
+                    else if (token == "+")
                     {
                         z = x + y;
-                        sb.Append($"Add {x} and {y} to get {z}");
-                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
+                        sb.AppendLine($"Add {x} and {y} to get {z}");
                     }
-                    if (token == "-")
+                    else if (token == "-")
                     {
                         z = x - y;
-                        sb.Append($"Subtract {y} from {x} to get {z}");
-                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
+                        sb.AppendLine($"Subtract {y} from {x} to get {z}");
+                        
                     }
-                    if (token == "*")
+                    else if (token == "*")
                     {
                         z = x * y;
-                        sb.Append($"Multiply {x} by {y} to get {z}");
-                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
+                        sb.AppendLine($"Multiply {x} by {y} to get {z}");
+                        
                     }
-                    if (token == "/")
+                    else if (token == "/")
                     {
                         z = x / y;
-                        sb.Append($"Divide {x} by {y} to get {z}");
-                        sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i+ 1))));
+                        sb.AppendLine($"Divide {x} by {y} to get {z}");
+                        
+                    }
+                    else
+                    {
+                        throw new UnknownOperatorException($"Unknow operator {token} ");
                     }
                     evalStack.Push(z);
+                    sb.AppendLine(Parser.ConvertToInfix(GenerateCurrentRPN(evalStack, tokens.Skip(i + 1))));
                 }
                 else
                 {
                     evalStack.Push(double.Parse(token));
                 }
             }
-            sb.Append(evalStack.Pop());
+            //sb.AppendLine(evalStack.Pop().ToString());
             return sb.ToString();
         }
 
-        private static string GenerateCurrentRPN(Stack<double> evalStack, IEnumerable<string> enumerable)
+        /// <summary>
+        /// regenerates the RPN that we were working on
+        /// </summary>
+        /// <param name="evalStack"></param>
+        /// <param name="remainderRPN"></param>
+        /// <returns></returns>
+        private static string GenerateCurrentRPN(Stack<double> evalStack, IEnumerable<string> remainderRPN)
         {
             StringBuilder currentRPN = new StringBuilder();
 
-            foreach(var current in evalStack)
+            foreach(double current in evalStack.Reverse())
             {
                 currentRPN.Append($"{current} ");
             }
-            foreach(var current in enumerable)
+            foreach(string current in remainderRPN)
             {
                 currentRPN.Append($"{current} ");
             }

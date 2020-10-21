@@ -36,7 +36,8 @@ namespace Calculator.Logic.UnitTests
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        [TestCase("3 3 3 + ^", "")]
+        [TestCase("3 3 3 + ^", "3 ^ ( 3 + 3 )\r\nAdd 3 and 3 to get 6\r\n3 ^ 6\r\nRaise 3 to the 6 Power to get 729\r\n729\r\n729\r\n")]
+        [TestCase("3 3 /", "3 / 3\r\nDivide 3 by 3 to get 1\r\n1\r\n1\r\n")]
         public void EvaluateRPN_StepByStepInfix_ValidInput(string input, string expected)
         {
             string actual = Evaluate.EvaluateRPN_StepByStepInfix(input);

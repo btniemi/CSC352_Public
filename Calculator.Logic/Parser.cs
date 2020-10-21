@@ -100,6 +100,10 @@ namespace Calculator.Logic
                 string currentToken = splitRPN[i];
                 if (isOperator(currentToken))
                 {
+                    if (outputStack.Count < 2)
+                    {
+                        throw new InvalidOperationException($"Should have at least 2 elements in stack found {outputStack.Count} ");
+                    }
                     // logic in here to pop the 2 left and right off the stack and create a new string from them remember spaces
                     string right = outputStack.Pop();
                     string left = outputStack.Pop();
