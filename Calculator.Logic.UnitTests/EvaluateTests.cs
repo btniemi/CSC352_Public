@@ -38,6 +38,7 @@ namespace Calculator.Logic.UnitTests
 
         [TestCase("3 3 3 + ^", "3 ^ ( 3 + 3 )\r\nAdd 3 and 3 to get 6\r\n3 ^ 6\r\nRaise 3 to the 6 Power to get 729\r\n729\r\n729\r\n")]
         [TestCase("3 3 /", "3 / 3\r\nDivide 3 by 3 to get 1\r\n1\r\n1\r\n")]
+        // might need to change the cases around here to make it work
         public void EvaluateRPN_StepByStepInfix_ValidInput(string input, string expected)
         {
             string actual = Evaluate.EvaluateRPN_StepByStepInfix(input);
