@@ -31,60 +31,98 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MapPictureBox = new System.Windows.Forms.PictureBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.AssetPictureBox = new System.Windows.Forms.PictureBox();
+            this.assetPictureBox = new System.Windows.Forms.PictureBox();
+            this.primaryHorizontalLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.primaryVerticalLayout = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.MapPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AssetPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
+            this.primaryHorizontalLayout.SuspendLayout();
+            this.primaryVerticalLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // MapPictureBox
             // 
+            this.MapPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MapPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("MapPictureBox.Image")));
-            this.MapPictureBox.Location = new System.Drawing.Point(192, 12);
+            this.MapPictureBox.Location = new System.Drawing.Point(129, 3);
             this.MapPictureBox.Name = "MapPictureBox";
-            this.MapPictureBox.Size = new System.Drawing.Size(823, 764);
+            this.MapPictureBox.Size = new System.Drawing.Size(897, 786);
             this.MapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MapPictureBox.TabIndex = 0;
             this.MapPictureBox.TabStop = false;
-            this.MapPictureBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.MapPictureBox_DragDrop);
-            this.MapPictureBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.MapPictureBox_DragEnter);
             // 
             // comboBox2
             // 
+            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(12, 168);
+            this.comboBox2.Location = new System.Drawing.Point(3, 159);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(114, 21);
             this.comboBox2.TabIndex = 2;
             // 
-            // AssetPictureBox
+            // assetPictureBox
             // 
-            this.AssetPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AssetPictureBox.Image")));
-            this.AssetPictureBox.Location = new System.Drawing.Point(12, 12);
-            this.AssetPictureBox.Name = "AssetPictureBox";
-            this.AssetPictureBox.Size = new System.Drawing.Size(114, 150);
-            this.AssetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.AssetPictureBox.TabIndex = 3;
-            this.AssetPictureBox.TabStop = false;
-            this.AssetPictureBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.AssetPictureBox_DragDrop);
-            this.AssetPictureBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.AssetPictureBox_DragEnter);
-            this.AssetPictureBox.DragOver += new System.Windows.Forms.DragEventHandler(this.AssetPictureBox_DragOver);
-            this.AssetPictureBox.DragLeave += new System.EventHandler(this.AssetPictureBox_DragLeave);
-            this.AssetPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AssetPictureBox_MouseDown);
+            this.assetPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.assetPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("assetPictureBox.Image")));
+            this.assetPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.assetPictureBox.Name = "assetPictureBox";
+            this.assetPictureBox.Size = new System.Drawing.Size(114, 150);
+            this.assetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.assetPictureBox.TabIndex = 3;
+            this.assetPictureBox.TabStop = false;
+            // 
+            // primaryHorizontalLayout
+            // 
+            this.primaryHorizontalLayout.AutoSize = true;
+            this.primaryHorizontalLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.primaryHorizontalLayout.ColumnCount = 2;
+            this.primaryHorizontalLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.primaryHorizontalLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.primaryHorizontalLayout.Controls.Add(this.primaryVerticalLayout, 0, 0);
+            this.primaryHorizontalLayout.Controls.Add(this.MapPictureBox, 1, 0);
+            this.primaryHorizontalLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.primaryHorizontalLayout.Location = new System.Drawing.Point(0, 0);
+            this.primaryHorizontalLayout.Name = "primaryHorizontalLayout";
+            this.primaryHorizontalLayout.RowCount = 1;
+            this.primaryHorizontalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.primaryHorizontalLayout.Size = new System.Drawing.Size(1029, 792);
+            this.primaryHorizontalLayout.TabIndex = 4;
+            // 
+            // primaryVerticalLayout
+            // 
+            this.primaryVerticalLayout.AutoSize = true;
+            this.primaryVerticalLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.primaryVerticalLayout.ColumnCount = 1;
+            this.primaryVerticalLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.primaryVerticalLayout.Controls.Add(this.assetPictureBox, 0, 0);
+            this.primaryVerticalLayout.Controls.Add(this.comboBox2, 0, 1);
+            this.primaryVerticalLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.primaryVerticalLayout.Location = new System.Drawing.Point(3, 3);
+            this.primaryVerticalLayout.Name = "primaryVerticalLayout";
+            this.primaryVerticalLayout.RowCount = 2;
+            this.primaryVerticalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.primaryVerticalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.primaryVerticalLayout.Size = new System.Drawing.Size(120, 786);
+            this.primaryVerticalLayout.TabIndex = 5;
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1029, 792);
-            this.Controls.Add(this.AssetPictureBox);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.MapPictureBox);
+            this.Controls.Add(this.primaryHorizontalLayout);
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "MapManager";
             ((System.ComponentModel.ISupportInitialize)(this.MapPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AssetPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).EndInit();
+            this.primaryHorizontalLayout.ResumeLayout(false);
+            this.primaryHorizontalLayout.PerformLayout();
+            this.primaryVerticalLayout.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -92,7 +130,9 @@
 
         private System.Windows.Forms.PictureBox MapPictureBox;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.PictureBox AssetPictureBox;
+        private System.Windows.Forms.PictureBox assetPictureBox;
+        private System.Windows.Forms.TableLayoutPanel primaryHorizontalLayout;
+        private System.Windows.Forms.TableLayoutPanel primaryVerticalLayout;
     }
 }
 

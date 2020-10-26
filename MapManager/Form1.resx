@@ -1857,7 +1857,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//Z
 </value>
   </data>
-  <data name="AssetPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="assetPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAUYAAAH0CAYAAABB1YSOAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5AYCAhcxM5Ge3QAA/4hJREFU
