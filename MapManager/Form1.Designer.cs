@@ -29,27 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.MapPictureBox = new System.Windows.Forms.PictureBox();
+            this.mapPictureBox = new System.Windows.Forms.PictureBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.assetPictureBox = new System.Windows.Forms.PictureBox();
             this.primaryHorizontalLayout = new System.Windows.Forms.TableLayoutPanel();
             this.primaryVerticalLayout = new System.Windows.Forms.TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.MapPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.primaryHorizontalLayout.SuspendLayout();
             this.primaryVerticalLayout.SuspendLayout();
             this.SuspendLayout();
             // 
-            // MapPictureBox
+            // mapPictureBox
             // 
-            this.MapPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MapPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("MapPictureBox.Image")));
-            this.MapPictureBox.Location = new System.Drawing.Point(129, 3);
-            this.MapPictureBox.Name = "MapPictureBox";
-            this.MapPictureBox.Size = new System.Drawing.Size(897, 786);
-            this.MapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MapPictureBox.TabIndex = 0;
-            this.MapPictureBox.TabStop = false;
+            this.mapPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("mapPictureBox.Image")));
+            this.mapPictureBox.Location = new System.Drawing.Point(129, 3);
+            this.mapPictureBox.Name = "mapPictureBox";
+            this.mapPictureBox.Size = new System.Drawing.Size(897, 786);
+            this.mapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mapPictureBox.TabIndex = 0;
+            this.mapPictureBox.TabStop = false;
+            this.mapPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapPictureBox_MouseMove);
             // 
             // comboBox2
             // 
@@ -70,6 +71,7 @@
             this.assetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.assetPictureBox.TabIndex = 3;
             this.assetPictureBox.TabStop = false;
+            this.assetPictureBox.Click += new System.EventHandler(this.assetPictureBox_Click);
             // 
             // primaryHorizontalLayout
             // 
@@ -79,7 +81,7 @@
             this.primaryHorizontalLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.primaryHorizontalLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.primaryHorizontalLayout.Controls.Add(this.primaryVerticalLayout, 0, 0);
-            this.primaryHorizontalLayout.Controls.Add(this.MapPictureBox, 1, 0);
+            this.primaryHorizontalLayout.Controls.Add(this.mapPictureBox, 1, 0);
             this.primaryHorizontalLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.primaryHorizontalLayout.Location = new System.Drawing.Point(0, 0);
             this.primaryHorizontalLayout.Name = "primaryHorizontalLayout";
@@ -116,7 +118,7 @@
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "MapManager";
-            ((System.ComponentModel.ISupportInitialize)(this.MapPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).EndInit();
             this.primaryHorizontalLayout.ResumeLayout(false);
             this.primaryHorizontalLayout.PerformLayout();
@@ -128,7 +130,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox MapPictureBox;
+        private System.Windows.Forms.PictureBox mapPictureBox;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.PictureBox assetPictureBox;
         private System.Windows.Forms.TableLayoutPanel primaryHorizontalLayout;
