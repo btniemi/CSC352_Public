@@ -17,11 +17,31 @@ namespace MapManager
         Bitmap overlayImage = null;
         Bitmap combinedImage = null;
         Point overlayLocation = new Point();
+        Decimal scaleX;
+        Decimal scaleY;
+
+        List<Layer> layers = new List<Layer>();
 
         public Form1()
         {
             InitializeComponent();
-            renderedMap = new Bitmap(mapPictureBox.Image);
+            layers.Add(new Layer() { FileName = "", Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
+            renderedMap = RenderLayers(layers);
+            mapPictureBox_Resize(this, new EventArgs());
+        }
+
+        private Bitmap RenderLayers(IEnumerable<Layer> layers)
+        {
+            return layers.First().Current;
+
+            //Bitmap render = new Bitmap();
+            
+            //foreach(var layer in layers)
+            //{
+            //    //walk through each layer and the logic in combined image should happen here
+            //    //and return us the complete rendered image
+            //    //each new layer needs to also run this logic after you set the new layer down...
+            //}
         }
 
         private void assetPictureBox_Click(object sender, EventArgs e)
@@ -63,11 +83,15 @@ namespace MapManager
             }
 
             overlayLocation = new Point(
-                e.X - overlayImage.Width / 2,
-                e.Y - overlayImage.Height / 2);
+                (int)(e.X * scaleX) - overlayImage.Width / 2,
+                (int)(e.Y * scaleY) - overlayImage.Height / 2);
             ShowCombinedImage();
+        }
+
+        private void mapPictureBox_Resize(object sender, EventArgs e)
+        {
+            scaleX = Decimal.Divide(renderedMap.Width, mapPictureBox.Width);
+            scaleY = Decimal.Divide(renderedMap.Height, mapPictureBox.Height);
         }
     }
 }
-
-// work on getting the overlay image to have the cursor centerd on the picture bring taken might be in combined image not sure work on for FRIDAY

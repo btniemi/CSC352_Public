@@ -51,6 +51,7 @@
             this.mapPictureBox.TabIndex = 0;
             this.mapPictureBox.TabStop = false;
             this.mapPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapPictureBox_MouseMove);
+            this.mapPictureBox.Resize += new System.EventHandler(this.mapPictureBox_Resize);
             // 
             // comboBox2
             // 
