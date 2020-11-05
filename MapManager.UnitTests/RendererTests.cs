@@ -20,6 +20,21 @@ namespace MapManager.UnitTests
             string bitmapPath = Path.Combine(TestContext.CurrentContext.TestDirectory, $"{TestContext.CurrentContext.Test.Name}.bmp");
             render.Save(bitmapPath);
         }
+
+        public void GenerateGrid()
+        {
+            Bitmap paper = new Bitmap(1001, 1001);
+            using (Graphics g = Graphics.FromImage(paper))
+            {
+                for (int i = 0; i <= 1000; i = i + 10)
+                {
+                    g.DrawLine(new Pen(Color.Black), new Point(i, 0), new Point(i, 1000)); //vertical line
+                    g.DrawLine(new Pen(Color.Black), new Point(0, i), new Point(1000, i)); //horizontal line
+                }
+            }
+            string savePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "Grid.bmp");
+            paper.Save(savePath);
+        }
     }
 
     internal class RenderLayer_ValidArguments_Tests : IEnumerable

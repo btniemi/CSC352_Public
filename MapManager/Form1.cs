@@ -26,22 +26,13 @@ namespace MapManager
         {
             InitializeComponent();
             layers.Add(new Layer() { FileName = "", Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
-            renderedMap = RenderLayers(layers);
+            renderedMap = RenderLayers();
             mapPictureBox_Resize(this, new EventArgs());
         }
 
-        private Bitmap RenderLayers(IEnumerable<Layer> layers)
+        private Bitmap RenderLayers()
         {
-            return layers.First().Current;
-
-            //Bitmap render = new Bitmap();
-            
-            //foreach(var layer in layers)
-            //{
-            //    //walk through each layer and the logic in combined image should happen here
-            //    //and return us the complete rendered image
-            //    //each new layer needs to also run this logic after you set the new layer down...
-            //}
+            return Renderer.RenderLayers(layers, mapPictureBox.Image.Width, mapPictureBox.Image.Height);
         }
 
         private void assetPictureBox_Click(object sender, EventArgs e)
@@ -86,12 +77,33 @@ namespace MapManager
                 (int)(e.X * scaleX) - overlayImage.Width / 2,
                 (int)(e.Y * scaleY) - overlayImage.Height / 2);
             ShowCombinedImage();
+
+            var mousePosition = new Point(e.X, e.Y);
+            mousePosActual.Text = $"Mouse Postion Actual - X: {e.X}, Y:{e.Y}";
+            mousePosScaled.Text = $"Mouse Postion Scaled - X: {overlayLocation.X}, Y:{overlayLocation.Y}";
         }
 
         private void mapPictureBox_Resize(object sender, EventArgs e)
         {
             scaleX = Decimal.Divide(renderedMap.Width, mapPictureBox.Width);
             scaleY = Decimal.Divide(renderedMap.Height, mapPictureBox.Height);
+        }
+
+        private void mapPictureBox_Click(object sender, EventArgs e)
+        {
+            if(overlayImage == null)
+            {
+                return;
+            }
+
+            layers.Add(new Layer() { Current = new Bitmap(overlayImage), FileName = string.Empty, Location = overlayLocation });
+            mapPictureBox.Cursor = Cursors.Default;
+            
+            overlayImage.Dispose();
+            overlayImage = null;
+
+            renderedMap = RenderLayers();
+            mapPictureBox.Image = renderedMap;
         }
     }
 }
