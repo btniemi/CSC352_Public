@@ -19,15 +19,39 @@ namespace MapManager
         Point overlayLocation = new Point();
         Decimal scaleX;
         Decimal scaleY;
+        bool isEditingImage = false;
 
-        List<Layer> layers = new List<Layer>();
+        BindingList<Layer> layers = new BindingList<Layer>();
 
         public Form1()
         {
             InitializeComponent();
             layers.Add(new Layer() { FileName = "", Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
             renderedMap = RenderLayers();
+            mapPictureBox.Image = renderedMap;
             mapPictureBox_Resize(this, new EventArgs());
+
+            // bind the combo box to our layers
+            BindingSource layersBindingSource = new BindingSource();
+            layersBindingSource.DataSource = layers;
+            layerSelectionComboBox.DataSource = layersBindingSource.DataSource;
+            layerSelectionComboBox.DisplayMember = "Name";
+            layerSelectionComboBox.ValueMember = "Current";
+
+            // bind the mouse wheel events
+            MouseWheel += Form1_MouseWheel;
+        }
+
+        private void Form1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (isEditingImage)
+            {
+                debugStatus.Text = $"Edit Mode: ON Size: {e.Delta}";
+            }
+            else
+            {
+                debugStatus.Text = $"Edit Mode: OFF Size: {e.Delta}";
+            }
         }
 
         private Bitmap RenderLayers()
@@ -39,6 +63,7 @@ namespace MapManager
         {
             overlayImage = new Bitmap(assetPictureBox.Image);
             mapPictureBox.Cursor = Cursors.Cross;
+            isEditingImage = true;
         }
 
         private void ShowCombinedImage()
@@ -104,6 +129,23 @@ namespace MapManager
 
             renderedMap = RenderLayers();
             mapPictureBox.Image = renderedMap;
+            isEditingImage = false;
+        }
+
+        private void layerSelectionComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (layerSelectionComboBox.SelectedValue is Bitmap)
+            {
+                layerPictureBox.Image = layerSelectionComboBox.SelectedValue as Bitmap;
+            }
+            else if (layerSelectionComboBox.SelectedValue is Layer)
+            {
+                layerPictureBox.Image = (layerSelectionComboBox.SelectedValue as Layer).Current;
+            }
+            else
+            {
+                // Do Nothing
+            }
         }
     }
 }
