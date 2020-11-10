@@ -35,6 +35,13 @@ namespace MapManager.UnitTests
             string savePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "Grid.bmp");
             paper.Save(savePath);
         }
+
+        [TestCase()] //mimic what is above...???
+        public void Scale_ValidArguments(Size original, double growPercent, Size expected)
+        {
+            Size actual = Renderer.Scale(original, growPercent);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 
     internal class RenderLayer_ValidArguments_Tests : IEnumerable

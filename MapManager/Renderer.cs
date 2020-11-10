@@ -23,5 +23,10 @@ namespace MapManager
 
             return render;
         }
+
+        public static Size Scale(Size original, double growPercent)
+        {
+            return new Size();
+        }
     }
 }

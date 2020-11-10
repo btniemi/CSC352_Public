@@ -20,6 +20,8 @@ namespace MapManager
         Decimal scaleX;
         Decimal scaleY;
         bool isEditingImage = false;
+        static int overlayScale = 0;
+        Bitmap originalOverlayImage = null;
 
         BindingList<Layer> layers = new BindingList<Layer>();
 
@@ -46,7 +48,35 @@ namespace MapManager
         {
             if (isEditingImage)
             {
-                debugStatus.Text = $"Edit Mode: ON Size: {e.Delta}";
+                if(originalOverlayImage == null)
+                {
+                    originalOverlayImage = new Bitmap(overlayImage);
+                }
+
+                debugStatus.Text = $"Edit Mode: ON Size: {e.Delta} Scale: {overlayScale}";
+
+                if (e.Delta > 1)
+                {
+                    // If Positive Grow Image
+                    overlayScale++;
+                }
+                else
+                {
+                    // Negitive Shrink
+                    overlayScale--;
+                }
+
+                double scale = overlayScale * .1;
+
+                Size scaledSize = new Size((int)(originalOverlayImage.Width * scale), (int)(originalOverlayImage.Height * scale));
+                scaledImageLabel.Text = scaledSize.ToString();
+
+                Bitmap scaledBitmap = new Bitmap(originalOverlayImage, scaledSize); // this work for increasing but once gets back to zero it breaks
+
+                overlayImage.Dispose();
+                overlayImage = null;
+                overlayImage = scaledBitmap;
+
             }
             else
             {
@@ -130,6 +160,9 @@ namespace MapManager
             renderedMap = RenderLayers();
             mapPictureBox.Image = renderedMap;
             isEditingImage = false;
+            overlayScale = 0;
+            originalOverlayImage.Dispose();
+            originalOverlayImage = null;
         }
 
         private void layerSelectionComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -146,6 +179,16 @@ namespace MapManager
             {
                 // Do Nothing
             }
+        }
+
+        private void scaledImageLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void debugStatus_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

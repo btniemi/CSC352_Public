@@ -35,12 +35,13 @@
             this.primaryHorizontalLayout = new System.Windows.Forms.TableLayoutPanel();
             this.primaryVerticalLayout = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.debugStatus = new System.Windows.Forms.Label();
             this.mousePosScaled = new System.Windows.Forms.Label();
             this.mousePosActual = new System.Windows.Forms.Label();
             this.lablesLayoutTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.layerPictureBox = new System.Windows.Forms.PictureBox();
             this.layerSelectionComboBox = new System.Windows.Forms.ComboBox();
-            this.debugStatus = new System.Windows.Forms.Label();
+            this.scaledImageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.primaryHorizontalLayout.SuspendLayout();
@@ -126,6 +127,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.scaledImageLabel);
             this.panel1.Controls.Add(this.debugStatus);
             this.panel1.Controls.Add(this.mousePosScaled);
             this.panel1.Controls.Add(this.mousePosActual);
@@ -134,6 +136,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 597);
             this.panel1.TabIndex = 4;
+            // 
+            // debugStatus
+            // 
+            this.debugStatus.AutoSize = true;
+            this.debugStatus.Location = new System.Drawing.Point(6, 44);
+            this.debugStatus.Name = "debugStatus";
+            this.debugStatus.Size = new System.Drawing.Size(61, 13);
+            this.debugStatus.TabIndex = 2;
+            this.debugStatus.Text = "Edit Mode: ";
+            this.debugStatus.Click += new System.EventHandler(this.debugStatus_Click);
             // 
             // mousePosScaled
             // 
@@ -187,14 +199,15 @@
             this.layerSelectionComboBox.TabIndex = 1;
             this.layerSelectionComboBox.SelectedValueChanged += new System.EventHandler(this.layerSelectionComboBox_SelectedValueChanged);
             // 
-            // debugStatus
+            // scaledImageLabel
             // 
-            this.debugStatus.AutoSize = true;
-            this.debugStatus.Location = new System.Drawing.Point(10, 38);
-            this.debugStatus.Name = "debugStatus";
-            this.debugStatus.Size = new System.Drawing.Size(61, 13);
-            this.debugStatus.TabIndex = 2;
-            this.debugStatus.Text = "Edit Mode: ";
+            this.scaledImageLabel.AutoSize = true;
+            this.scaledImageLabel.Location = new System.Drawing.Point(7, 57);
+            this.scaledImageLabel.Name = "scaledImageLabel";
+            this.scaledImageLabel.Size = new System.Drawing.Size(98, 13);
+            this.scaledImageLabel.TabIndex = 3;
+            this.scaledImageLabel.Text = "Scaled Image Size:";
+            this.scaledImageLabel.Click += new System.EventHandler(this.scaledImageLabel_Click);
             // 
             // Form1
             // 
@@ -235,6 +248,7 @@
         private System.Windows.Forms.PictureBox layerPictureBox;
         private System.Windows.Forms.ComboBox layerSelectionComboBox;
         private System.Windows.Forms.Label debugStatus;
+        private System.Windows.Forms.Label scaledImageLabel;
     }
 }
 
