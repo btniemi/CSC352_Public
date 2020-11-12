@@ -20,7 +20,7 @@ namespace MapManager
         Decimal scaleX;
         Decimal scaleY;
         bool isEditingImage = false;
-        static int overlayScale = 0;
+        static int overlayScale = 100;
         Bitmap originalOverlayImage = null;
 
         BindingList<Layer> layers = new BindingList<Layer>();
@@ -55,23 +55,34 @@ namespace MapManager
 
                 debugStatus.Text = $"Edit Mode: ON Size: {e.Delta} Scale: {overlayScale}";
 
+                int increaseScaleBy = 1;
+
+                if(Control.ModifierKeys == Keys.Shift)
+                {
+                    increaseScaleBy = 10;
+                }
+
                 if (e.Delta > 1)
                 {
                     // If Positive Grow Image
-                    overlayScale++;
+                    overlayScale = overlayScale + increaseScaleBy;
                 }
                 else
                 {
                     // Negitive Shrink
-                    overlayScale--;
+                    if(overlayScale - increaseScaleBy > 1)
+                    {
+                        overlayScale = overlayScale - increaseScaleBy;
+                    }
+                    
                 }
 
-                double scale = overlayScale * .1;
+                double scale = overlayScale * .01;
 
-                Size scaledSize = new Size((int)(originalOverlayImage.Width * scale), (int)(originalOverlayImage.Height * scale));
+                Size scaledSize = Renderer.Scale(originalOverlayImage.Size, scale);
                 scaledImageLabel.Text = scaledSize.ToString();
 
-                Bitmap scaledBitmap = new Bitmap(originalOverlayImage, scaledSize); // this work for increasing but once gets back to zero it breaks
+                Bitmap scaledBitmap = new Bitmap(originalOverlayImage, scaledSize);
 
                 overlayImage.Dispose();
                 overlayImage = null;
@@ -159,10 +170,14 @@ namespace MapManager
 
             renderedMap = RenderLayers();
             mapPictureBox.Image = renderedMap;
-            isEditingImage = false;
-            overlayScale = 0;
-            originalOverlayImage.Dispose();
+            overlayScale = 100;
+
+            originalOverlayImage?.Dispose();
             originalOverlayImage = null;
+
+            isEditingImage = false;
+
+
         }
 
         private void layerSelectionComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -187,6 +202,11 @@ namespace MapManager
         }
 
         private void debugStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Edit_Click(object sender, EventArgs e)
         {
 
         }

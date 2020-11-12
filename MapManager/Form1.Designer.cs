@@ -35,20 +35,23 @@
             this.primaryHorizontalLayout = new System.Windows.Forms.TableLayoutPanel();
             this.primaryVerticalLayout = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.scaledImageLabel = new System.Windows.Forms.Label();
             this.debugStatus = new System.Windows.Forms.Label();
             this.mousePosScaled = new System.Windows.Forms.Label();
             this.mousePosActual = new System.Windows.Forms.Label();
-            this.lablesLayoutTablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.layersTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.layerPictureBox = new System.Windows.Forms.PictureBox();
             this.layerSelectionComboBox = new System.Windows.Forms.ComboBox();
-            this.scaledImageLabel = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Edit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.primaryHorizontalLayout.SuspendLayout();
             this.primaryVerticalLayout.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.lablesLayoutTablePanel.SuspendLayout();
+            this.layersTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layerPictureBox)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapPictureBox
@@ -96,13 +99,13 @@
             this.primaryHorizontalLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
             this.primaryHorizontalLayout.Controls.Add(this.primaryVerticalLayout, 0, 0);
             this.primaryHorizontalLayout.Controls.Add(this.mapPictureBox, 1, 0);
-            this.primaryHorizontalLayout.Controls.Add(this.lablesLayoutTablePanel, 2, 0);
+            this.primaryHorizontalLayout.Controls.Add(this.layersTablePanel, 2, 0);
             this.primaryHorizontalLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.primaryHorizontalLayout.Location = new System.Drawing.Point(0, 0);
             this.primaryHorizontalLayout.Name = "primaryHorizontalLayout";
-            this.primaryHorizontalLayout.RowCount = 2;
+            this.primaryHorizontalLayout.RowCount = 1;
             this.primaryHorizontalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.primaryHorizontalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.primaryHorizontalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 792F));
             this.primaryHorizontalLayout.Size = new System.Drawing.Size(1348, 792);
             this.primaryHorizontalLayout.TabIndex = 4;
             // 
@@ -137,6 +140,16 @@
             this.panel1.Size = new System.Drawing.Size(200, 597);
             this.panel1.TabIndex = 4;
             // 
+            // scaledImageLabel
+            // 
+            this.scaledImageLabel.AutoSize = true;
+            this.scaledImageLabel.Location = new System.Drawing.Point(7, 66);
+            this.scaledImageLabel.Name = "scaledImageLabel";
+            this.scaledImageLabel.Size = new System.Drawing.Size(98, 13);
+            this.scaledImageLabel.TabIndex = 3;
+            this.scaledImageLabel.Text = "Scaled Image Size:";
+            this.scaledImageLabel.Click += new System.EventHandler(this.scaledImageLabel_Click);
+            // 
             // debugStatus
             // 
             this.debugStatus.AutoSize = true;
@@ -165,49 +178,60 @@
             this.mousePosActual.TabIndex = 0;
             this.mousePosActual.Text = "Mouse Position Actual - X: Y:";
             // 
-            // lablesLayoutTablePanel
+            // layersTablePanel
             // 
-            this.lablesLayoutTablePanel.ColumnCount = 1;
-            this.lablesLayoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.lablesLayoutTablePanel.Controls.Add(this.layerPictureBox, 0, 0);
-            this.lablesLayoutTablePanel.Controls.Add(this.layerSelectionComboBox, 0, 1);
-            this.lablesLayoutTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lablesLayoutTablePanel.Location = new System.Drawing.Point(1118, 3);
-            this.lablesLayoutTablePanel.Name = "lablesLayoutTablePanel";
-            this.lablesLayoutTablePanel.RowCount = 2;
-            this.lablesLayoutTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.lablesLayoutTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.lablesLayoutTablePanel.Size = new System.Drawing.Size(227, 786);
-            this.lablesLayoutTablePanel.TabIndex = 6;
+            this.layersTablePanel.ColumnCount = 1;
+            this.layersTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.layersTablePanel.Controls.Add(this.layerPictureBox, 0, 0);
+            this.layersTablePanel.Controls.Add(this.panel2, 0, 1);
+            this.layersTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layersTablePanel.Location = new System.Drawing.Point(1118, 3);
+            this.layersTablePanel.Name = "layersTablePanel";
+            this.layersTablePanel.RowCount = 2;
+            this.layersTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.layersTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.layersTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layersTablePanel.Size = new System.Drawing.Size(227, 786);
+            this.layersTablePanel.TabIndex = 6;
             // 
             // layerPictureBox
             // 
             this.layerPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layerPictureBox.Location = new System.Drawing.Point(3, 3);
             this.layerPictureBox.Name = "layerPictureBox";
-            this.layerPictureBox.Size = new System.Drawing.Size(221, 701);
-            this.layerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.layerPictureBox.Size = new System.Drawing.Size(221, 622);
+            this.layerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.layerPictureBox.TabIndex = 0;
             this.layerPictureBox.TabStop = false;
             // 
             // layerSelectionComboBox
             // 
             this.layerSelectionComboBox.FormattingEnabled = true;
-            this.layerSelectionComboBox.Location = new System.Drawing.Point(3, 710);
+            this.layerSelectionComboBox.Location = new System.Drawing.Point(11, 14);
             this.layerSelectionComboBox.Name = "layerSelectionComboBox";
-            this.layerSelectionComboBox.Size = new System.Drawing.Size(215, 21);
+            this.layerSelectionComboBox.Size = new System.Drawing.Size(204, 21);
             this.layerSelectionComboBox.TabIndex = 1;
             this.layerSelectionComboBox.SelectedValueChanged += new System.EventHandler(this.layerSelectionComboBox_SelectedValueChanged);
             // 
-            // scaledImageLabel
+            // panel2
             // 
-            this.scaledImageLabel.AutoSize = true;
-            this.scaledImageLabel.Location = new System.Drawing.Point(7, 57);
-            this.scaledImageLabel.Name = "scaledImageLabel";
-            this.scaledImageLabel.Size = new System.Drawing.Size(98, 13);
-            this.scaledImageLabel.TabIndex = 3;
-            this.scaledImageLabel.Text = "Scaled Image Size:";
-            this.scaledImageLabel.Click += new System.EventHandler(this.scaledImageLabel_Click);
+            this.panel2.Controls.Add(this.Edit);
+            this.panel2.Controls.Add(this.layerSelectionComboBox);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 631);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(221, 152);
+            this.panel2.TabIndex = 1;
+            // 
+            // Edit
+            // 
+            this.Edit.Location = new System.Drawing.Point(11, 55);
+            this.Edit.Name = "Edit";
+            this.Edit.Size = new System.Drawing.Size(75, 23);
+            this.Edit.TabIndex = 2;
+            this.Edit.Text = "Edit";
+            this.Edit.UseVisualStyleBackColor = true;
+            this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
             // Form1
             // 
@@ -227,8 +251,9 @@
             this.primaryVerticalLayout.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.lablesLayoutTablePanel.ResumeLayout(false);
+            this.layersTablePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layerPictureBox)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,11 +269,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label mousePosScaled;
         private System.Windows.Forms.Label mousePosActual;
-        private System.Windows.Forms.TableLayoutPanel lablesLayoutTablePanel;
+        private System.Windows.Forms.TableLayoutPanel layersTablePanel;
         private System.Windows.Forms.PictureBox layerPictureBox;
-        private System.Windows.Forms.ComboBox layerSelectionComboBox;
         private System.Windows.Forms.Label debugStatus;
         private System.Windows.Forms.Label scaledImageLabel;
+        private System.Windows.Forms.ComboBox layerSelectionComboBox;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button Edit;
     }
 }
 
