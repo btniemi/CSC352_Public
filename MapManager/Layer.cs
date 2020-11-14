@@ -12,6 +12,7 @@ namespace MapManager
         public Layer()
         {
             Name = Guid.NewGuid().ToString("D");
+            ShouldRender = true;
         }
         public Layer(string filePath)
         {
@@ -19,6 +20,7 @@ namespace MapManager
             FileName = filePath;
             Location = new Point(0, 0);
             Name = Guid.NewGuid().ToString("D");
+            ShouldRender = true;
         }
         public Bitmap Current { get; set; }
 
@@ -29,5 +31,7 @@ namespace MapManager
         public string Name { get; set; }
 
         public Size RendererSize{ get; set; }
+
+        public bool ShouldRender { get; set; }
     }
 }

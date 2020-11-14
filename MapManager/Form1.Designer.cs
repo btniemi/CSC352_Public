@@ -41,9 +41,9 @@
             this.mousePosActual = new System.Windows.Forms.Label();
             this.layersTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.layerPictureBox = new System.Windows.Forms.PictureBox();
-            this.layerSelectionComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Edit = new System.Windows.Forms.Button();
+            this.editLayerBtn = new System.Windows.Forms.Button();
+            this.layerSelectionComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.primaryHorizontalLayout.SuspendLayout();
@@ -148,7 +148,6 @@
             this.scaledImageLabel.Size = new System.Drawing.Size(98, 13);
             this.scaledImageLabel.TabIndex = 3;
             this.scaledImageLabel.Text = "Scaled Image Size:";
-            this.scaledImageLabel.Click += new System.EventHandler(this.scaledImageLabel_Click);
             // 
             // debugStatus
             // 
@@ -158,7 +157,6 @@
             this.debugStatus.Size = new System.Drawing.Size(61, 13);
             this.debugStatus.TabIndex = 2;
             this.debugStatus.Text = "Edit Mode: ";
-            this.debugStatus.Click += new System.EventHandler(this.debugStatus_Click);
             // 
             // mousePosScaled
             // 
@@ -204,18 +202,9 @@
             this.layerPictureBox.TabIndex = 0;
             this.layerPictureBox.TabStop = false;
             // 
-            // layerSelectionComboBox
-            // 
-            this.layerSelectionComboBox.FormattingEnabled = true;
-            this.layerSelectionComboBox.Location = new System.Drawing.Point(11, 14);
-            this.layerSelectionComboBox.Name = "layerSelectionComboBox";
-            this.layerSelectionComboBox.Size = new System.Drawing.Size(204, 21);
-            this.layerSelectionComboBox.TabIndex = 1;
-            this.layerSelectionComboBox.SelectedValueChanged += new System.EventHandler(this.layerSelectionComboBox_SelectedValueChanged);
-            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.Edit);
+            this.panel2.Controls.Add(this.editLayerBtn);
             this.panel2.Controls.Add(this.layerSelectionComboBox);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 631);
@@ -223,15 +212,24 @@
             this.panel2.Size = new System.Drawing.Size(221, 152);
             this.panel2.TabIndex = 1;
             // 
-            // Edit
+            // editLayerBtn
             // 
-            this.Edit.Location = new System.Drawing.Point(11, 55);
-            this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(75, 23);
-            this.Edit.TabIndex = 2;
-            this.Edit.Text = "Edit";
-            this.Edit.UseVisualStyleBackColor = true;
-            this.Edit.Click += new System.EventHandler(this.Edit_Click);
+            this.editLayerBtn.Location = new System.Drawing.Point(11, 55);
+            this.editLayerBtn.Name = "editLayerBtn";
+            this.editLayerBtn.Size = new System.Drawing.Size(75, 23);
+            this.editLayerBtn.TabIndex = 2;
+            this.editLayerBtn.Text = "Edit";
+            this.editLayerBtn.UseVisualStyleBackColor = true;
+            this.editLayerBtn.Click += new System.EventHandler(this.editLayerBtn_Click);
+            // 
+            // layerSelectionComboBox
+            // 
+            this.layerSelectionComboBox.FormattingEnabled = true;
+            this.layerSelectionComboBox.Location = new System.Drawing.Point(11, 16);
+            this.layerSelectionComboBox.Name = "layerSelectionComboBox";
+            this.layerSelectionComboBox.Size = new System.Drawing.Size(196, 21);
+            this.layerSelectionComboBox.TabIndex = 1;
+            this.layerSelectionComboBox.SelectedValueChanged += new System.EventHandler(this.layerSelectionComboBox_SelectedValueChanged);
             // 
             // Form1
             // 
@@ -275,7 +273,7 @@
         private System.Windows.Forms.Label scaledImageLabel;
         private System.Windows.Forms.ComboBox layerSelectionComboBox;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button Edit;
+        private System.Windows.Forms.Button editLayerBtn;
     }
 }
 
