@@ -23,14 +23,14 @@ namespace MapManager
         static int overlayScale = 100;
         Bitmap originalOverlayImage = null;
         bool isModifyingLayer = false;
-        int editingLayerIndex =-1;
+        int editingLayerIndex = -1;
 
         BindingList<Layer> layers = new BindingList<Layer>();
 
         public Form1()
         {
             InitializeComponent();
-            layers.Add(new Layer() { FileName = "", Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
+            layers.Add(new Layer() { Name ="Base", FileName = null, Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
             renderedMap = RenderLayers();
             mapPictureBox.Image = renderedMap;
             mapPictureBox_Resize(this, new EventArgs());
@@ -48,11 +48,10 @@ namespace MapManager
 
         private void Form1_MouseWheel(object sender, MouseEventArgs e)
         {
-            // do we need to update this with isModifyingImage???
 
             if (isEditingImage)
             {
-                if(originalOverlayImage == null)
+                if (originalOverlayImage == null)
                 {
                     originalOverlayImage = new Bitmap(overlayImage);
                 }
@@ -61,7 +60,7 @@ namespace MapManager
 
                 int increaseScaleBy = 1;
 
-                if(Control.ModifierKeys == Keys.Shift)
+                if (Control.ModifierKeys == Keys.Shift)
                 {
                     increaseScaleBy = 10;
                 }
@@ -74,11 +73,11 @@ namespace MapManager
                 else
                 {
                     // Negitive Shrink
-                    if(overlayScale - increaseScaleBy > 1)
+                    if (overlayScale - increaseScaleBy > 1)
                     {
                         overlayScale = overlayScale - increaseScaleBy;
                     }
-                    
+
                 }
 
                 double scale = overlayScale * .01;
@@ -113,14 +112,14 @@ namespace MapManager
 
         private void ShowCombinedImage()
         {
-            if(renderedMap == null && overlayImage == null)
+            if (renderedMap == null && overlayImage == null)
             {
                 return;
             }
 
             mapPictureBox.Image = renderedMap;
 
-            if(combinedImage != null)
+            if (combinedImage != null)
             {
                 combinedImage.Dispose();
                 combinedImage = null;
@@ -128,7 +127,7 @@ namespace MapManager
 
             combinedImage = new Bitmap(renderedMap);
 
-            using(Graphics combiner = Graphics.FromImage(combinedImage))
+            using (Graphics combiner = Graphics.FromImage(combinedImage))
             {
                 combiner.DrawImage(overlayImage, overlayLocation);
             }
@@ -138,7 +137,7 @@ namespace MapManager
 
         private void mapPictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if(overlayImage == null)
+            if (overlayImage == null)
             {
                 return;
             }
@@ -150,6 +149,8 @@ namespace MapManager
             if (isModifyingLayer)
             {
                 layers[editingLayerIndex].Location = overlayLocation;
+                layers[editingLayerIndex].Current.Dispose();
+                layers[editingLayerIndex].Current = new Bitmap(overlayImage);
                 layers[editingLayerIndex].ShouldRender = true;
                 Image previousImage = mapPictureBox.Image;
                 mapPictureBox.Image = RenderLayers();
@@ -175,7 +176,7 @@ namespace MapManager
 
         private void mapPictureBox_Click(object sender, EventArgs e)
         {
-            if(overlayImage == null)
+            if (overlayImage == null)
             {
                 return;
             }
@@ -186,10 +187,13 @@ namespace MapManager
                 editingLayerIndex = -1;
                 isModifyingLayer = false;
             }
+            else
+            {
+                layers.Add(new Layer() { Current = new Bitmap(overlayImage), FileName = string.Empty, Location = overlayLocation });
+            }
 
-            layers.Add(new Layer() { Current = new Bitmap(overlayImage), FileName = string.Empty, Location = overlayLocation });
             mapPictureBox.Cursor = Cursors.Default;
-            
+
             overlayImage.Dispose();
             overlayImage = null;
 
