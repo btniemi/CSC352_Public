@@ -76,11 +76,11 @@
             this.assetComboBox.Name = "assetComboBox";
             this.assetComboBox.Size = new System.Drawing.Size(200, 21);
             this.assetComboBox.TabIndex = 2;
+            this.assetComboBox.SelectedIndexChanged += new System.EventHandler(this.assetComboBox_SelectedIndexChanged);
             // 
             // assetPictureBox
             // 
             this.assetPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.assetPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("assetPictureBox.Image")));
             this.assetPictureBox.Location = new System.Drawing.Point(3, 3);
             this.assetPictureBox.Name = "assetPictureBox";
             this.assetPictureBox.Size = new System.Drawing.Size(200, 150);

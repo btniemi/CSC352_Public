@@ -17,11 +17,12 @@ namespace MapManager
         public static IEnumerable<Asset> Construct(string assetDirectory)
         {
             IList<Asset> assets = new List<Asset>();
-            var allAssetsPath = Directory.EnumerateFiles(assetDirectory, "*.jpg", SearchOption.AllDirectories);
+            var allAssetsPath = Directory.EnumerateFiles(assetDirectory, "*.png", SearchOption.AllDirectories);
 
             foreach(var assetPath in allAssetsPath)
             {
-                assets.Add(new Asset(assetPath));
+                string name = assetPath.Replace(assetDirectory, string.Empty);
+                assets.Add(new Asset(assetPath) { Name = name });
             }
 
             return assets;

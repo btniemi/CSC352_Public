@@ -44,6 +44,13 @@ namespace MapManager
 
             // bind the mouse wheel events
             MouseWheel += Form1_MouseWheel;
+
+            // bind the combo box to out assets binging source
+            BindingSource assestBindingSource = new BindingSource();
+            assestBindingSource.DataSource = AssetFactory.Construct(@"C:\Users\braedon.niemi\Documents\GitHub\CSC352_Public\MapManager\Assets");
+            assetComboBox.DataSource = assestBindingSource.DataSource;
+            assetComboBox.DisplayMember = "Name";
+            assetComboBox.ValueMember = "FilePath";
         }
 
         private void Form1_MouseWheel(object sender, MouseEventArgs e)
@@ -232,6 +239,29 @@ namespace MapManager
             mapPictureBox.Cursor = Cursors.Cross;
             isEditingImage = true;
             isModifyingLayer = true;
+        }
+
+        private void assetComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // we know where the asset file is
+            string assetFilePath;
+
+            if(assetComboBox.SelectedValue is string)
+            {
+                assetFilePath = assetComboBox.SelectedValue as string;
+            }
+            else if (assetComboBox.SelectedValue is Asset)
+            {
+                assetFilePath = (assetComboBox.SelectedValue as Asset).FilePath;
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
+
+            // load the asset file as a bit map
+            Bitmap assetPicture = new Bitmap(assetFilePath);
+            assetPictureBox.Image = assetPicture;
         }
     }
 }
