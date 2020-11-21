@@ -44,6 +44,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.editLayerBtn = new System.Windows.Forms.Button();
             this.layerSelectionComboBox = new System.Windows.Forms.ComboBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.primaryHorizontalLayout.SuspendLayout();
@@ -52,6 +56,7 @@
             this.layersTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layerPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapPictureBox
@@ -101,12 +106,12 @@
             this.primaryHorizontalLayout.Controls.Add(this.mapPictureBox, 1, 0);
             this.primaryHorizontalLayout.Controls.Add(this.layersTablePanel, 2, 0);
             this.primaryHorizontalLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.primaryHorizontalLayout.Location = new System.Drawing.Point(0, 0);
+            this.primaryHorizontalLayout.Location = new System.Drawing.Point(0, 24);
             this.primaryHorizontalLayout.Name = "primaryHorizontalLayout";
             this.primaryHorizontalLayout.RowCount = 1;
             this.primaryHorizontalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.primaryHorizontalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 792F));
-            this.primaryHorizontalLayout.Size = new System.Drawing.Size(1348, 792);
+            this.primaryHorizontalLayout.Size = new System.Drawing.Size(1348, 768);
             this.primaryHorizontalLayout.TabIndex = 4;
             // 
             // primaryVerticalLayout
@@ -143,7 +148,7 @@
             // scaledImageLabel
             // 
             this.scaledImageLabel.AutoSize = true;
-            this.scaledImageLabel.Location = new System.Drawing.Point(7, 66);
+            this.scaledImageLabel.Location = new System.Drawing.Point(6, 74);
             this.scaledImageLabel.Name = "scaledImageLabel";
             this.scaledImageLabel.Size = new System.Drawing.Size(98, 13);
             this.scaledImageLabel.TabIndex = 3;
@@ -152,7 +157,7 @@
             // debugStatus
             // 
             this.debugStatus.AutoSize = true;
-            this.debugStatus.Location = new System.Drawing.Point(6, 44);
+            this.debugStatus.Location = new System.Drawing.Point(6, 50);
             this.debugStatus.Name = "debugStatus";
             this.debugStatus.Size = new System.Drawing.Size(61, 13);
             this.debugStatus.TabIndex = 2;
@@ -161,7 +166,7 @@
             // mousePosScaled
             // 
             this.mousePosScaled.AutoSize = true;
-            this.mousePosScaled.Location = new System.Drawing.Point(7, 21);
+            this.mousePosScaled.Location = new System.Drawing.Point(6, 26);
             this.mousePosScaled.Name = "mousePosScaled";
             this.mousePosScaled.Size = new System.Drawing.Size(147, 13);
             this.mousePosScaled.TabIndex = 1;
@@ -231,6 +236,39 @@
             this.layerSelectionComboBox.TabIndex = 1;
             this.layerSelectionComboBox.SelectedValueChanged += new System.EventHandler(this.layerSelectionComboBox_SelectedValueChanged);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1348, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadToolStripMenuItem,
+            this.saveToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -239,6 +277,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1348, 792);
             this.Controls.Add(this.primaryHorizontalLayout);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "MapManager";
@@ -252,6 +292,8 @@
             this.layersTablePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layerPictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,6 +316,10 @@
         private System.Windows.Forms.ComboBox layerSelectionComboBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button editLayerBtn;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
     }
 }
 

@@ -33,5 +33,6 @@ namespace MapManager
         public Size RendererSize{ get; set; }
 
         public bool ShouldRender { get; set; }
+
     }
 }

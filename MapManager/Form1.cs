@@ -263,5 +263,40 @@ namespace MapManager
             Bitmap assetPicture = new Bitmap(assetFilePath);
             assetPictureBox.Image = assetPicture;
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           using(SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Bitmap (*.bmp)|*.bmp";
+                DialogResult result = sfd.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    mapPictureBox.Image.Save(sfd.FileName);
+                }
+            }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "JPEG (*.jpg)|*.jpg|Bitmap (*.bmp)|*.bmp";
+                DialogResult result = ofd.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    mapPictureBox.Image = new Bitmap(ofd.FileName);
+                    layerSelectionComboBox.DataSource = null;
+                    layers.Clear();
+                    layers.Add(new Layer() { Name = "Base", FileName = ofd.FileName, Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
+                    layerSelectionComboBox.DataSource = layers;
+                    layerSelectionComboBox.DisplayMember = "Name";
+                    layerSelectionComboBox.ValueMember = "Current";
+                    renderedMap.Dispose();
+                    renderedMap = RenderLayers();
+                    layerSelectionComboBox_SelectedValueChanged(this, new EventArgs());
+                }
+            }
+        }
     }
 }
