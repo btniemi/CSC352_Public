@@ -35,6 +35,8 @@ namespace MapManager
             mapPictureBox.Image = renderedMap;
             mapPictureBox_Resize(this, new EventArgs());
 
+            // understand the M-V-VM better to blow the interviewers away
+
             // bind the combo box to our layers
             BindingSource layersBindingSource = new BindingSource();
             layersBindingSource.DataSource = layers;
