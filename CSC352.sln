@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapManager", "MapManager\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapManager.UnitTests", "MapManager.UnitTests\MapManager.UnitTests.csproj", "{C8228815-B931-4E7A-9B3F-F0F55F0CE396}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectPangram", "DetectPanagram\DetectPangram.csproj", "{752E70BA-0DD0-437B-8FF4-F60DAEE341D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{C8228815-B931-4E7A-9B3F-F0F55F0CE396}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8228815-B931-4E7A-9B3F-F0F55F0CE396}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8228815-B931-4E7A-9B3F-F0F55F0CE396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{752E70BA-0DD0-437B-8FF4-F60DAEE341D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752E70BA-0DD0-437B-8FF4-F60DAEE341D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752E70BA-0DD0-437B-8FF4-F60DAEE341D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752E70BA-0DD0-437B-8FF4-F60DAEE341D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
